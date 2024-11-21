@@ -1,0 +1,58 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the functions for the circle, parabola, ellipse, hyperbola, and lines
+def circle(x, h, k, r):
+    return np.sqrt(r**2 - (x - h)**2) + k
+
+def parabola(x):
+    return -(x - 2)*(x - 4)
+
+def ellipse(x):
+    return np.sqrt((4 - (x - 2)**2)/4) + 2
+
+# Define values for plotting
+x_vals = np.linspace(-5, 5, 400)
+y_vals_circle_top = circle(x_vals, 1, 2, 3)
+y_vals_circle_bottom = -circle(x_vals, 1, 2, 3)
+
+# Plotting the results
+plt.figure(figsize=(8, 8))
+
+# Circle
+plt.plot(x_vals, y_vals_circle_top, label='Circle: (x - 1)^2 + (y - 2)^2 = 9')
+plt.plot(x_vals, y_vals_circle_bottom)
+
+# Parabola
+x_parabola = np.linspace(1.5, 4.5, 400)
+y_parabola = parabola(x_parabola)
+plt.plot(x_parabola, y_parabola, label='Parabola: y = -(x - 2)(x - 4)')
+
+# Ellipse
+x_ellipse = np.linspace(0, 4, 400)
+y_ellipse = ellipse(x_ellipse)
+plt.plot(x_ellipse, y_ellipse, label='Ellipse: (x - 2)^2 + 4(y - 2)^2 = 4')
+
+# Hyperbola
+y_vals_hyperbola = np.sqrt(x_vals**2 - 1)
+plt.plot(x_vals, y_vals_hyperbola, label='Hyperbola: x^2 - y^2 = 1')
+plt.plot(x_vals, -y_vals_hyperbola)
+
+# Marking the intersection points for hyperbola and ellipse
+plt.scatter([np.sqrt(2), -np.sqrt(2)], [1, 1], color='red', zorder=5, label='Intersection points')
+plt.scatter([np.sqrt(2), -np.sqrt(2)], [-1, -1], color='red', zorder=5)
+
+# Labels and plot settings
+plt.axhline(0, color='black',linewidth=1)
+plt.axvline(0, color='black',linewidth=1)
+plt.xlim([-5, 5])
+plt.ylim([-5, 5])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Conic Sections (Circle, Parabola, Ellipse, Hyperbola)')
+
+# Show legend and grid
+plt.legend()
+plt.grid(True)
+plt.gca().set_aspect('equal', adjustable='box')
+plt.show()
