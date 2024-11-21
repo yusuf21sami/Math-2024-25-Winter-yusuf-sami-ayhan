@@ -1,0 +1,49 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+# Function to plot lines
+def plot_line(equation, x_range, label):
+    y_values = equation(x_range)
+    plt.plot(x_range, y_values, label=label)
+
+# Equation functions
+def line1(x): return x + 1
+def line2(x): return 2*x
+def line3(x): return -1/2 * x + 5/2
+def line4(x): return 3*x + 2
+def line5(x): return 3/2 * x + 1/2
+def line6(x): return -3/2 * x + 3
+def line7(x): return x + 3
+
+# x range for plotting
+x_vals = np.linspace(-10, 10, 400)
+
+# Create plot
+plt.figure(figsize=(8,8))
+
+# Plot the lines
+plot_line(line1, x_vals, 'Line through A(1, 2) and B(3, 4): y = x + 1')
+plot_line(line2, x_vals, 'Parallel to y = 2x + 3: y = 2x')
+plot_line(line3, x_vals, 'Perpendicular to y = 2x + 3: y = -1/2x + 5/2')
+plot_line(line4, x_vals, 'y = 3x + 2')
+plot_line(line5, x_vals, 'Parallel to vector [2, 3]: y = 3/2x + 1/2')
+plot_line(line6, x_vals, 'Perpendicular to y = 2x + 3: y = -3/2x + 3')
+plot_line(line7, x_vals, 'y = x + 3')
+
+# Intersection point of y = 2x + 3 and y = 3x + 2: (1, 5)
+plt.scatter(1, 5, color='red', zorder=5, label='Intersection Point (1, 5)')
+
+# Labels and plot settings
+plt.axhline(0, color='black',linewidth=1)
+plt.axvline(0, color='black',linewidth=1)
+plt.xlim([-10, 10])
+plt.ylim([-10, 10])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Visualization of Line Equations')
+plt.legend(loc='best')
+plt.grid(True)
+
+# Show plot
+plt.show()
