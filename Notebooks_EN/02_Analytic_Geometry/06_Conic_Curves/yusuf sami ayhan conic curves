@@ -1,0 +1,94 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sympy import symbols, Eq, solve, sqrt
+
+# 1. Equation of a Circle with center A(1, 2) and radius r=3
+def plot_circle():
+    center = (1, 2)
+    radius = 3
+    theta = np.linspace(0, 2*np.pi, 100)
+    x = center[0] + radius * np.cos(theta)
+    y = center[1] + radius * np.sin(theta)
+
+    plt.plot(x, y, label='Circle: (x - 1)^2 + (y - 2)^2 = 9')
+    plt.scatter(center[0], center[1], color='red', zorder=5)  # Center A(1, 2)
+    plt.text(center[0] + 0.2, center[1], 'A(1, 2)', fontsize=12, color='red')
+    
+# 2. Equation of a Parabola intersecting the x-axis at x=2, x=4, passing through (3, 1)
+def plot_parabola():
+    a = -1  # Found from earlier solution
+    x_vals = np.linspace(0, 5, 400)
+    y_vals = a * (x_vals - 2) * (x_vals - 4)
+
+    plt.plot(x_vals, y_vals, label=r'Parabola: $y = -(x-2)(x-4)$')
+
+# 3. Find the center of the ellipse given by x^2 + 4y^2 - 4x - 16y + 16 = 0
+def plot_ellipse():
+    # Completing the square for the ellipse equation
+    # (x - 2)^2 / 4 + (y - 2)^2 / 1 = 1
+    center = (2, 2)
+    a = 2  # semi-major axis length (sqrt(4))
+    b = 1  # semi-minor axis length (sqrt(1))
+    theta = np.linspace(0, 2*np.pi, 100)
+    x = center[0] + a * np.cos(theta)
+    y = center[1] + b * np.sin(theta)
+
+    plt.plot(x, y, label=r'Ellipse: $(x - 2)^2 / 4 + (y - 2)^2 / 1 = 1$')
+    plt.scatter(center[0], center[1], color='blue', zorder=5)  # Center of ellipse
+    plt.text(center[0] + 0.2, center[1], 'Center (2, 2)', fontsize=12, color='blue')
+
+# 4. Slope of the tangent line to the circle x^2 + y^2 = 1
+def find_tangent_slope():
+    m = symbols('m', real=True, positive=True)
+    equation = Eq(5 / sqrt(m**2 + 1), 1)  # Distance from origin to line = 1 (radius)
+    slope_solution = solve(equation, m)
+    return slope_solution[0]
+
+# 5. Intersection points of the hyperbola x^2 - y^2 = 1 and the ellipse x^2 + 4y^2 = 6
+def find_intersection_points():
+    x, y = symbols('x y', real=True)
+    eq1 = Eq(x**2 - y**2, 1)  # Hyperbola
+    eq2 = Eq(x**2 + 4*y**2, 6)  # Ellipse
+    solution = solve((eq1, eq2), (x, y))
+    return solution
+
+# 6. Distance between the branches of the hyperbola x^2 - y^2 = 1
+def distance_between_hyperbola_branches():
+    return sqrt(2)  # This is the distance between the branches
+
+# Plot all the figures
+def plot_all():
+    plt.figure(figsize=(8, 8))
+
+    # Plot circle
+    plot_circle()
+
+    # Plot parabola
+    plot_parabola()
+
+    # Plot ellipse
+    plot_ellipse()
+
+    # Set axis limits and labels
+    plt.xlim(-4, 6)
+    plt.ylim(-4, 6)
+    plt.axhline(0, color='black',linewidth=0.5)
+    plt.axvline(0, color='black',linewidth=0.5)
+    plt.grid(True)
+    plt.gca().set_aspect('equal', adjustable='box')
+    plt.title("Geometric Figures: Circle, Parabola, Ellipse")
+    plt.legend()
+    plt.show()
+
+# Display results
+def display_results():
+    print("4. Slope of the tangent line to the circle x^2 + y^2 = 1: m = ", find_tangent_slope())
+    
+    intersections = find_intersection_points()
+    print("5. Intersection points of the hyperbola x^2 - y^2 = 1 and the ellipse x^2 + 4y^2 = 6: ", intersections)
+    
+    print("6. Distance between the branches of the hyperbola x^2 - y^2 = 1: ", distance_between_hyperbola_branches())
+
+# Run the visualization and calculations
+plot_all()
+display_results()
