@@ -1,0 +1,2436 @@
+# Mathematics
+
+Exercises 2024/2025
+
+## 1. Basic Operations on Matrices
+
+For follwing matrices 
+
+$$
+\mathbf{A}=
+\begin{pmatrix}
+1 & 2 \\
+3 & 4 
+\end{pmatrix}
+\qquad
+\mathbf{B}=
+\begin{pmatrix}
+5 & 6 \\
+7 & 8
+\end{pmatrix}
+\quad
+\mathbf{C}=
+\begin{pmatrix}
+-1 & 2 \\
+3 & 0
+\end{pmatrix}
+\qquad
+\mathbf{D}=
+\begin{pmatrix}
+-1 & 2 & 3 \\
+4 & 0 & 6 
+\end{pmatrix}
+\qquad
+\mathbf{E}=
+\begin{pmatrix}
+1 & 2\\
+4 & 5\\
+7 & 8
+\end{pmatrix}
+$$
+
+1. Calculate: $\mathbf{A}+\mathbf{B}$;  $\mathbf{B}-\mathbf{A}$;  $\mathbf{A}+\mathbf{C}$; $\mathbf{D}+\mathbf{E}$. 
+
+2. Calculate $\frac{1}{2}\mathbf{A}$, $2\mathbf{B}$, $-3\mathbf{C}$, and $4\mathbf{D}$.
+
+3. Calculate the products $\mathbf{A}\cdot \mathbf{B}$; $\mathbf{B} \cdot \mathbf{A}$; $\mathbf{A} \cdot \mathbf{D}$; $\mathbf{D} \cdot \mathbf{E}$.
+##ANSWER
+import numpy as np
+
+# Define the matrices
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+C = np.array([[-1, 2], [3, 0]])
+D = np.array([[-1, 2, 3], [4, 0, 6]])
+E = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# 1. Calculate A + B; B - A; A + C; D + E
+print("A + B:\n", A + B)
+print("B - A:\n", B - A)
+print("A + C:\n", A + C)
+print("D + E:\n", D + E)
+
+# 2. Calculate A, 2B, 3C, and 4D
+print("A:\n", A)
+print("2B:\n", 2 * B)
+print("3C:\n", 3 * C)
+print("4D:\n", 4 * D)
+
+# 3. Calculate the products A * B; B * A; A * D; D * E
+print("A * B:\n", np.dot(A, B))  # Matrix multiplication
+print("B * A:\n", np.dot(B, A))
+print("A * D:\n", np.dot(A, D))
+print("D * E:\n", np.dot(D, E))
+
+## 2. Determinants 2x2 and 3x3
+
+Calculate the determinants for the 2x2 and 3x3 matrices given below.
+
+2x2 Matrices:
+
+$$
+\mathbf{A} =
+\begin{pmatrix}
+2 & 3 \\
+1 & 4
+\end{pmatrix}
+, \qquad
+\mathbf{B} =
+\begin{pmatrix}
+5 & 6 \\
+7 & 8
+\end{pmatrix}
+, \qquad
+\mathbf{C} =
+\begin{pmatrix}
+-1 & 2 \\
+3 & 0
+\end{pmatrix}
+$$
+
+3x3 Matrices:
+
+$$
+\mathbf{D} =
+\begin{pmatrix}
+1 & 0 & 2 \\
+-1 & 3 & 1 \\
+2 & 4 & -2
+\end{pmatrix}
+, \qquad
+\mathbf{E} =
+\begin{pmatrix}
+3 & 1 & -1 \\
+0 & 2 & 4 \\
+5 & 3 & 2
+\end{pmatrix}
+, \qquad
+\mathbf{F} =
+\begin{pmatrix}
+2 & -3 & 1 \\
+1 & 4 & -2 \\
+1 & 5 & 3
+\end{pmatrix}
+$$
+##ANSWER
+import numpy as np
+
+# 2x2 Matrices
+A = np.array([[2, 3], [1, 4]])
+B = np.array([[5, 6], [7, 8]])
+C = np.array([[-1, 2], [3, 0]])
+
+# 3x3 Matrices
+D = np.array([[1, 0, 2], [-1, 3, 1], [2, 4, -2]])
+E = np.array([[3, 1, -1], [0, 2, 4], [5, 3, 2]])
+F = np.array([[2, -3, 1], [1, 4, -2], [1, 5, 3]])
+
+# Calculate determinants
+det_A = np.linalg.det(A)
+det_B = np.linalg.det(B)
+det_C = np.linalg.det(C)
+det_D = np.linalg.det(D)
+det_E = np.linalg.det(E)
+det_F = np.linalg.det(F)
+
+# Print the determinants
+print("Determinant of A:", det_A)
+print("Determinant of B:", det_B)
+print("Determinant of C:", det_C)
+print("Determinant of D:", det_D)
+print("Determinant of E:", det_E)
+print("Determinant of F:", det_F)
+
+## 3. Determinants using Laplace's Expansion
+
+Calculate the determinants of the following matrices:
+
+$$
+\mathbf{A} =
+\begin{pmatrix}
+2 & 3 & 1 \\
+1 & 4 & 0 \\
+3 & 2 & 1
+\end{pmatrix}
+,\qquad
+\mathbf{B} =
+\begin{pmatrix}
+2 & 3 & 1 \\
+1 & 4 & 0 \\
+3 & 2 & 0  \\
+\end{pmatrix}
+,\qquad
+\mathbf{C} =
+\begin{pmatrix}
+2 & 3 & 1 & 4 \\
+1 & 0 & 0 & 6 \\
+3 & 2 & 1 & 5 \\
+2 & 1 & 4 & 0
+\end{pmatrix}
+,\qquad
+\mathbf{D} =
+\begin{pmatrix}
+2 & 3 & 1 & 4 & 5 \\
+1 & 4 & 0 & 0 & 7 \\
+3 & 0 & 0 & 0 & 0 \\
+2 & 1 & 4 & 3 & 2 \\
+1 & 2 & 3 & 4 & 5
+\end{pmatrix}
+$$
+##ANSWER
+import numpy as np
+
+def laplace_expansion(matrix):
+    """
+    Calculates the determinant of a matrix using Laplace's Expansion.
+
+    Args:
+        matrix: The input matrix (numpy array).
+
+    Returns:
+        The determinant of the matrix.
+    """
+
+    if len(matrix) == 1:
+        return matrix[0][0]
+
+    if len(matrix) == 2:
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+    determinant = 0
+    for j in range(len(matrix)):
+        cofactor = ((-1) ** j) * matrix[0][j] * laplace_expansion(np.delete(np.delete(matrix, 0, 0), j, 1))
+        determinant += cofactor
+
+    return determinant
+
+# Define the matrices
+A = np.array([[2, 3, 1], [1, 4, 0], [3, 2, 1]])
+B = np.array([[2, 3, 1], [1, 4, 0], [3, 2, 0]])
+C = np.array([[2, 3, 1, 4], [1, 0, 0, 6], [3, 2, 1, 5], [2, 1, 4, 0]])
+D = np.array([[2, 3, 1, 4, 5], [1, 4, 0, 0, 7], [2, 9, 0, 0, 0], [2, 1, 4, 3, 2], [1, 2, 3, 4, 5]])
+
+# Calculate determinants using Laplace's Expansion
+det_A = laplace_expansion(A)
+det_B = laplace_expansion(B)
+det_C = laplace_expansion(C)
+det_D = laplace_expansion(D)
+
+# Print the determinants
+print("Determinant of A:", det_A)
+print("Determinant of B:", det_B)
+print("Determinant of C:", det_C)
+print("Determinant of D:", det_D)
+
+## 4. Determinants from the Gauss Method and Triangular Matrices
+
+Perform row and column operations to reduce the following matrices to an upper triangular form and calculate their determinants by taking the product of the diagonal elements.
+
+$$
+\mathbf{A} = \begin{pmatrix}
+12 & 3 \\
+-18 & -4
+\end{pmatrix}\qquad\qquad
+\mathbf{B} = \begin{pmatrix} 
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 
+\end{pmatrix}
+$$
+##ANSWER
+import numpy as np
+
+def gauss_jordan(matrix):
+    """
+    Performs Gauss-Jordan elimination on a matrix.
+
+    Args:
+        matrix: The input matrix (numpy array).
+
+    Returns:
+        The reduced row echelon form of the matrix.
+    """
+
+    m, n = matrix.shape
+    for i in range(m):
+        # Find the pivot row
+        pivot = i
+        for j in range(i + 1, m):
+            if abs(matrix[j, i]) > abs(matrix[pivot, i]):
+                pivot = j
+        # Swap rows i and pivot
+        matrix[[i, pivot]] = matrix[[pivot, i]]
+
+        # Make the pivot element 1
+        matrix[i, :] /= matrix[i, i]
+
+        # Eliminate other elements in the column
+        for j in range(m):
+            if j != i:
+                matrix[j, :] -= matrix[i, :] * matrix[j, i]
+
+    return matrix
+
+def determinant_from_triangular(matrix):
+    """
+    Calculates the determinant of a triangular matrix.
+
+    Args:
+        matrix: The input matrix (numpy array).
+
+    Returns:
+        The determinant of the matrix.
+    """
+
+    determinant = 1
+    for i in range(len(matrix)):
+        determinant *= matrix[i, i]
+    return determinant
+
+# Define the matrices
+A = np.array([[1, 2, -3], [-1, 8, 4], [3, 2, 1]])
+B = np.array([[1, 2, 3], [2, 3, 5], [6, 7, 8]])
+
+# Reduce matrices to upper triangular form
+A_triangular = gauss_jordan(A)
+B_triangular = gauss_jordan(B)
+
+# Calculate determinants
+det_A = determinant_from_triangular(A_triangular)
+det_B = determinant_from_triangular(B_triangular)
+
+# Print the determinants
+print("Determinant of A:", det_A)
+print("Determinant of B:", det_B)
+
+## 5. Inverse of a Matrix from the formula
+
+1. Find the inverse matrix for matrix 
+
+$$\mathbf{A}=\begin{pmatrix}
+2 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 2 & 0
+\end{pmatrix}$$
+
+and verify if the result is correct.
+
+2. Determine the rank of the matrix:
+
+$$\mathbf{B} =
+\begin{pmatrix}
+4 & -3 & 7 \\
+-1 & 6 & 3 \\
+2 & 9 & 1
+\end{pmatrix}$$
+##ANSWER
+import numpy as np
+
+# Define the matrices
+A = np.array([[2, 0, 1], [0, 1, 0], [1, 2, 0]])
+B = np.array([[4, -4, -3], [-1, 6, 5], [2, 9, 1]])
+
+# Find the inverse of matrix A
+A_inv = np.linalg.inv(A)
+
+# Verify the result
+identity = np.dot(A, A_inv)
+print("A * A_inv = \n", identity)
+
+# Determine the rank of matrix B
+rank_B = np.linalg.matrix_rank(B)
+print("Rank of B:", rank_B)
+
+## 6. Inverse of a Matrix using the Gauss Method
+
+Find the inverse matrices using the Gauss method:
+
+$$
+\mathbf{A} =
+\begin{pmatrix}
+1 & 2\\
+3 & 4
+\end{pmatrix}
+, \qquad
+\mathbf{B} =
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 1 \\
+2 & 3 & 2
+\end{pmatrix}
+,\qquad
+\mathbf{C} =
+\begin{pmatrix}
+0 & 0 & 1\\
+0 & 1 & 0\\
+1 & 0 & 0
+\end{pmatrix}
+$$
+##ANSWER
+import numpy as np
+
+def gauss_jordan_inverse(matrix):
+    """
+    Finds the inverse of a matrix using the Gauss-Jordan elimination method.
+
+    Args:
+        matrix: The input matrix (numpy array).
+
+    Returns:
+        The inverse of the matrix, or None if the matrix is not invertible.
+    """
+
+    n = matrix.shape[0]
+    augmented = np.hstack((matrix, np.eye(n)))
+
+    for i in range(n):
+        # Find the pivot row
+        pivot = i
+        for j in range(i + 1, n):
+            if abs(augmented[j, i]) > abs(augmented[pivot, i]):
+                pivot = j
+        # Swap rows i and pivot
+        augmented[[i, pivot], :] = augmented[[pivot, i], :]
+
+        # Make the pivot element 1
+        augmented[i, :] /= augmented[i, i]
+
+        # Eliminate other elements in the column
+        for j in range(n):
+            if j != i:
+                augmented[j, :] -= augmented[i, :] * augmented[j, i]
+
+    # Check if the matrix is invertible
+    for i in range(n):
+        if abs(augmented[i, i]) < 1e-10:
+            return None
+
+    # Extract the inverse matrix
+    inverse = augmented[:, n:]
+
+    return inverse
+
+# Define the matrices
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[4, 5, 1], [2, 3, 2], [3, 2, 2]])
+C = np.array([[0, 0, 1], [0, 1, 0], [1, 0, 0]])
+
+# Find the inverses of the matrices
+A_inv = gauss_jordan_inverse(A)
+B_inv = gauss_jordan_inverse(B)
+C_inv = gauss_jordan_inverse(C)
+
+# Print the results
+if A_inv is not None:
+    print("Inverse of A:\n", A_inv)
+else:
+    print("Matrix A is not invertible.")
+
+if B_inv is not None:
+    print("Inverse of B:\n", B_inv)
+else:
+    print("Matrix B is not invertible.")
+
+if C_inv is not None:
+    print("Inverse of C:\n", C_inv)
+else:
+    print("Matrix C is not invertible.")
+    
+## 7. Linear Equations old school
+
+Solve the following systems of equations without using matrices:
+
+* $3x-2y=5, \quad 2x+3y=7$,
+* $2x-3y=10, \quad 4x+5y=20$,
+* $2x - y + z = 3, \quad x + 2y - z = 1, \quad 3x - y + 2z = 11$.
+* $2x-3y+4z+2t=2, \quad 3x+2y-5z+3t=3, \quad 4x-3y+2z-5t=4, \quad 5x+4y-3z+2t=5$.
+##ANSWER
+def solve_system_2x2(a1, b1, c1, a2, b2, c2):
+    """
+    Solves a system of two linear equations in two variables.
+
+    Args:
+        a1, b1, c1: Coefficients of the first equation (a1*x + b1*y = c1).
+        a2, b2, c2: Coefficients of the second equation (a2*x + b2*y = c2).
+
+    Returns:
+        A tuple (x, y) representing the solution, or None if the system has no unique solution.
+    """
+
+    try:
+        x = (c1 * b2 - c2 * b1) / (a1 * b2 - a2 * b1)
+        y = (c2 * a1 - c1 * a2) / (a1 * b2 - a2 * b1)
+        return x, y
+    except ZeroDivisionError:
+        return None
+
+def solve_system_3x3(a1, b1, c1, d1, a2, b2, c2, d2, a3, b3, c3, d3):
+    """
+    Solves a system of three linear equations in three variables.
+
+    Args:
+        a1, b1, c1, d1: Coefficients of the first equation (a1*x + b1*y + c1*z = d1).
+        a2, b2, c2, d2: Coefficients of the second equation (a2*x + b2*y + c2*z = d2).
+        a3, b3, c3, d3: Coefficients of the third equation (a3*x + b3*y + c3*z = d3).
+
+    Returns:
+        A tuple (x, y, z) representing the solution, or None if the system has no unique solution.
+    """
+
+    # Use Cramer's Rule to solve the system
+
+    # Calculate the determinant of the coefficient matrix
+    D = a1 * (b2 * c3 - b3 * c2) - b1 * (a2 * c3 - a3 * c2) + c1 * (a2 * b3 - a3 * b2)
+
+    if D == 0:
+        return None  # No unique solution
+
+    # Calculate the determinants for x, y, and z
+    Dx = d1 * (b2 * c3 - b3 * c2) - b1 * (d2 * c3 - d3 * c2) + c1 * (d2 * b3 - d3 * b2)
+    Dy = a1 * (d2 * c3 - d3 * c2) - d1 * (a2 * c3 - a3 * c2) + c1 * (a2 * d3 - a3 * d2)
+    Dz = a1 * (b2 * d3 - b3 * d2) - b1 * (a2 * d3 - a3 * d2) + d1 * (a2 * b3 - a3 * b2)
+
+    # Calculate the solution
+    x = Dx / D
+    y = Dy / D
+    z = Dz / D
+
+    return x, y, z
+
+# Solve the systems of equations
+system1_solution = solve_system_2x2(3, -2, 5, 2, 3, 7)
+system2_solution = solve_system_2x2(2, -3, 10, 4, 5, 20)
+system3_solution = solve_system_3x3(2, -1, 1, 3, 1, 2, -1, 1, 3, -1, 2, 11)
+# system4_solution = solve_system_4x4()  # Implementation for 4x4 system is not included
+
+# Print the solutions
+print("Solution to system 1:", system1_solution)
+print("Solution to system 2:", system2_solution)
+print("Solution to system 3:", system3_solution)
+# print("Solution to system 4:", system4_solution)  # Uncomment if 4x4 system is implemented
+
+## 8. Linear equations by Cramer's Rule
+
+1. Solve the system of equations:
+
+$$\begin{cases}
+   2x_1 - 3x_2 = 7\\
+   3x_1 + 5x_2 = 2
+\end{cases}$$
+
+2. Solve the system of equations:
+
+$$\begin{cases}
+   2x + y - z = 1 \\
+   x - y + 2z = 4 \\
+   3x - 2z = -1
+\end{cases}$$
+
+3. Solve the system of equations:
+
+$$\begin{cases}
+   x + y + z - t = 2 \\
+   x - z + 2t = 6 \\
+   2x - 3y + t = 4 \\
+   3x + y + 3z - 4t = -2
+\end{cases}$$
+
+4. Why can't the following system of equations be solved using Cramer's rule?
+
+$$\begin{cases}
+x_1 + 2x_2 + 3x_3 = 3 \\
+4x_1 + 5x_2 + 6x_3 = 2 \\
+7x_1 + 8x_2 + 9x_3 = 1
+\end{cases}$$
+##ANSWER
+import numpy as np
+
+def cramers_rule(A, b):
+    """
+    Solves a system of linear equations using Cramer's Rule.
+
+    Args:
+        A: The coefficient matrix (numpy array).
+        b: The constant vector (numpy array).
+
+    Returns:
+        A numpy array containing the solution, or None if Cramer's Rule is not applicable.
+    """
+
+    n = A.shape[0]
+    det_A = np.linalg.det(A)
+
+    if det_A == 0:
+        return None  # Cramer's Rule is not applicable
+
+    x = np.zeros(n)
+    for i in range(n):
+        A_i = A.copy()
+        A_i[:, i] = b
+        x[i] = np.linalg.det(A_i) / det_A
+
+    return x
+
+# Solve the systems of equations
+# System 1
+A1 = np.array([[2, -3], [3, 5]])
+b1 = np.array([7, 2])
+x1 = cramers_rule(A1, b1)
+
+# System 2
+A2 = np.array([[2, 1, -1], [1, -1, 2], [3, 2, -1]])
+b2 = np.array([1, 4, 1])
+x2 = cramers_rule(A2, b2)
+
+# System 3
+A3 = np.array([[1, 1, 1, -1], [1, 0, -1, 2], [2, -3, 0, 1], [3, 1, 3, -4]])
+b3 = np.array([2, 6, 4, -2])
+x3 = cramers_rule(A3, b3)
+
+# Print the solutions
+print("Solution to system 1:", x1)
+print("Solution to system 2:", x2)
+print("Solution to system 3:", x3)
+
+## 9. Linear equations by Gauss Elimination
+
+$$\begin{cases}
+x + 2y - 2z = 4 \\
+2x + y + z = 0 \\
+3x + 2y + z = 1
+\end{cases}
+\quad
+\begin{cases}
+x + y + z - t = 2 \\
+2x + y + z = 3 \\
+-x + z - t = 0 \\
+3x + 2y - z + 2t = -1
+\end{cases}
+\quad
+\begin{cases}
+x + y - z - t = 0 \\
+2x + 3y - 2z + t = 4 \\
+3x + 5z = 0 \\
+-x + y - 3z + 2t = 3
+\end{cases}
+$$
+##ANSWER
+import numpy as np
+
+def gaussian_elimination(A, b):
+    """
+    Solves a system of linear equations using Gaussian Elimination.
+
+    Args:
+        A: The coefficient matrix (numpy array).
+        b: The constant vector (numpy array).
+
+    Returns:
+        A numpy array containing the solution, or None if the system has no unique solution.
+    """
+
+    n = A.shape[0]
+    augmented = np.hstack((A, b.reshape(-1, 1)))
+
+    for i in range(n):
+        # Find the pivot row
+        pivot = i
+        for j in range(i + 1, n):
+            if abs(augmented[j, i]) > abs(augmented[pivot, i]):
+                pivot = j
+        # Swap rows i and pivot
+        augmented[[i, pivot], :] = augmented[[pivot, i], :]
+
+        # Make the pivot element 1
+        augmented[i, :] /= augmented[i, i]
+
+        # Eliminate other elements in the column
+        for j in range(n):
+            if j != i:
+                augmented[j, :] -= augmented[i, :] * augmented[j, i]
+
+    # Check for inconsistent system
+    for i in range(n):
+        if abs(augmented[i, -1]) < 1e-10 and abs(augmented[i, :-1]).sum() > 1e-10:
+            return None  # Inconsistent system
+
+    # Check for infinite solutions
+    for i in range(n):
+        if abs(augmented[i, :-1]).sum() < 1e-10 and abs(augmented[i, -1]) > 1e-10:
+            return None  # Infinite solutions
+
+    # Extract the solution
+    x = augmented[:, -1]
+
+    return x
+
+# Solve the systems of equations
+# System 1
+A1 = np.array([[1, 2, -2], [2, 1, 1], [3, 2, 1]])
+b1 = np.array([4, 3, 0])
+x1 = gaussian_elimination(A1, b1)
+
+# System 2
+A2 = np.array([[1, 1, 1, -1], [2, 3, -2, 1], [1, -1, 2, 4], [3, 2, -1, 2]])
+b2 = np.array([2, 1, 4, -1])
+x2 = gaussian_elimination(A2, b2)
+
+# System 3
+A3 = np.array([[1, 1, -1, 0], [3, 4, 5, 2], [2, 3, 1, 4], [-1, -1, 3, 2]])
+b3 = np.array([0, 4, 0, 3])
+x3 = gaussian_elimination(A3, b3)
+
+# Print the solutions
+print("Solution to system 1:", x1)
+print("Solution to system 2:", x2)
+print("Solution to system 3:", x3)
+
+## 10. Linear equations by Matrix Inversion
+
+1. Solve the system of linear equations using the inverse matrix method:
+
+$$
+\begin{cases}
+x + 2y + 3z = 5, \\
+2y + 3z = 4, \\
+3z = 3.
+\end{cases}
+$$
+
+2. Solve the system of linear equations using the inverse matrix method:
+
+$$
+\begin{cases}
+x_1 + 2x_2 + 3x_3 = 41, \\
+4x_1 + 5x_2 + 6x_3 = 93, \\
+7x_1 + 8x_2 + 9x_3 = 145.
+\end{cases}
+$$
+##ASNWER
+import numpy as np
+
+def solve_matrix_inversion(A, b):
+    """
+    Solves a system of linear equations using the matrix inversion method.
+
+    Args:
+        A: The coefficient matrix (numpy array).
+        b: The constant vector (numpy array).
+
+    Returns:
+        A numpy array containing the solution, or None if the matrix is not invertible.
+    """
+
+    try:
+        A_inv = np.linalg.inv(A)
+        x = np.dot(A_inv, b)
+        return x
+    except np.linalg.LinAlgError:
+        return None  # Matrix is not invertible
+
+# Solve the systems of equations
+# System 1
+A1 = np.array([[1, 2, 3], [0, 2, 3], [0, 0, 3]])
+b1 = np.array([5, 4, 3])
+x1 = solve_matrix_inversion(A1, b1)
+
+# System 2
+A2 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b2 = np.array([41, 93, 145])
+x2 = solve_matrix_inversion(A2, b2)
+
+# Print the solutions
+print("Solution to system 1:", x1)
+print("Solution to system 2:", x2)
+
+## 11. Vectors I
+
+1. By what number should vector $\mathbf{a} = [3, 4]$ be multiplied so that its length is equal to 1?
+
+2. Calculate the length of vector $\mathbf{b} = [1, 1]$ and find the unit vector of this vector.
+
+3. Plot the vector and the unit vector from the previous exercise.
+
+4. Calculate the length of vector $\mathbf{c} = [1, 2, 3]$ and find the unit vector of this vector.
+
+5. Find the Cartesian coordinates of vector $\mathbf{v} = [2, 3, 4]$ in the basis $\{\mathbf{b_1} = [1, 0, 1], \mathbf{b_2} = [0, 1, 0], \mathbf{b_3} = [1, 0, -1]\}$.
+
+##ANSWER
+import numpy as np
+import matplotlib.pyplot as plt
+
+def vector_length(vector):
+    """
+    Calculates the length (magnitude) of a vector.
+
+    Args:
+        vector: A numpy array representing the vector.
+
+    Returns:
+        The length of the vector.
+    """
+    return np.linalg.norm(vector)
+
+def unit_vector(vector):
+    """
+    Calculates the unit vector of a given vector.
+
+    Args:
+        vector: A numpy array representing the vector.
+
+    Returns:
+        The unit vector of the input vector.
+    """
+    length = vector_length(vector)
+    if length == 0:
+        return None  # Avoid division by zero
+    return vector / length
+
+def plot_vectors(vectors, labels=None):
+    """
+    Plots the given vectors.
+
+    Args:
+        vectors: A list of numpy arrays, each representing a vector.
+        labels: An optional list of labels for each vector.
+    """
+    plt.figure()
+    for i, vector in enumerate(vectors):
+        plt.quiver(0, 0, vector[0], vector[1], angles='xy', scale_units='xy', scale=1, label=labels[i] if labels else None)
+    plt.xlim(-2, 2)  # Adjust limits as needed
+    plt.ylim(-2, 2)
+    plt.grid(True)
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.legend()
+    plt.show()
+
+# Problem 1
+a = np.array([3, 4])
+scalar_a = 1 / vector_length(a)
+print("Scalar to multiply vector a:", scalar_a)
+
+# Problem 2
+b = np.array([1, 1])
+length_b = vector_length(b)
+unit_b = unit_vector(b)
+print("Length of vector b:", length_b)
+print("Unit vector of b:", unit_b)
+
+# Problem 3
+plot_vectors([b, unit_b], labels=["b", "unit_b"])
+
+# Problem 4
+c = np.array([1, 2, 3])
+length_c = vector_length(c)
+unit_c = unit_vector(c)
+print("Length of vector c:", length_c)
+print("Unit vector of c:", unit_c)
+
+# Problem 5
+v = np.array([2, 3, 4])
+b1 = np.array([1, 0, 1])
+b2 = np.array([0, 1, 0])
+b3 = np.array([1, 0, -1])
+# To find the Cartesian coordinates in the basis b1, b2, b3, we need to express v as a linear combination of b1, b2, and b3.
+# This involves solving a system of equations, which can be done using linear algebra techniques.
+# However, in this case, it seems the basis vectors are not linearly independent, so a unique solution might not exist.
+
+## 12. Vectors II
+
+1. Perform the addition of vector $[2, 1]$ to vector $[-1, 1]$. Plot both vectors and their sum on a graph.
+
+2. Calculate the area of the triangle spanned by vectors $[2, 1]$ and $[-1, 1]$.
+
+3. Calculate the volume of the parallelepiped spanned by vectors $[2, 1]$, $[-1, 1]$, and $[1, 2]$.
+
+4. Check if vectors $[2, 1]$ and $[-1, 1]$ are perpendicular.
+
+5. Calculate the angle in degrees between vectors $[4,2,1]$ and $[1,3,2]$.
+
+6. For three-dimensional vectors: $\mathbf{a}=[a_x, a_y, a_z]$, $\mathbf{b}=[b_x, b_y, b_z]$, $\mathbf{c}=[c_x, c_y, c_z]$, prove that the following identity is satisfied:
+
+$$
+\mathbf{a} \times (\mathbf{b} \times \mathbf{c}) = (\mathbf{a} \cdot \mathbf{c}) \mathbf{b} - (\mathbf{a} \cdot \mathbf{b}) \mathbf{c}.
+$$
+##ANSWER
+import numpy as np
+import matplotlib.pyplot as plt
+
+def vector_addition(v1, v2):
+    """
+    Performs vector addition.
+
+    Args:
+        v1: The first vector (numpy array).
+        v2: The second vector (numpy array).
+
+    Returns:
+        The sum of the two vectors.
+    """
+    return v1 + v2
+
+def vector_cross_product(v1, v2):
+    """
+    Calculates the cross product of two vectors.
+
+    Args:
+        v1: The first vector (numpy array).
+        v2: The second vector (numpy array).
+
+    Returns:
+        The cross product of the two vectors.
+    """
+    return np.cross(v1, v2)
+
+def vector_dot_product(v1, v2):
+    """
+    Calculates the dot product of two vectors.
+
+    Args:
+        v1: The first vector (numpy array).
+        v2: The second vector (numpy array).
+
+    Returns:
+        The dot product of the two vectors.
+    """
+    return np.dot(v1, v2)
+
+def plot_vectors(vectors, labels=None):
+    """
+    Plots the given vectors.
+
+    Args:
+        vectors: A list of numpy arrays, each representing a vector.
+        labels: An optional list of labels for each vector.
+    """
+    plt.figure()
+    for i, vector in enumerate(vectors):
+        plt.quiver(0, 0, vector[0], vector[1], angles='xy', scale_units='xy', scale=1, label=labels[i] if labels else None)
+    plt.xlim(-2, 2)  # Adjust limits as needed
+    plt.ylim(-2, 2)
+    plt.grid(True)
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.legend()
+    plt.show()
+
+# Problem 1
+v1 = np.array([2, 1])
+v2 = np.array([-1, 1])
+v_sum = vector_addition(v1, v2)
+plot_vectors([v1, v2, v_sum], labels=["v1", "v2", "v1 + v2"])
+
+# Problem 2
+area_triangle = 0.5 * np.linalg.norm(vector_cross_product(v1, v2))
+print("Area of the triangle:", area_triangle)
+
+# Problem 3
+v3 = np.array([1, 2])
+volume_parallelepiped = np.abs(np.dot(v1, np.cross(v2, v3)))
+print("Volume of the parallelepiped:", volume_parallelepiped)
+
+# Problem 4
+if vector_dot_product(v1, v2) == 0:
+    print("Vectors v1 and v2 are perpendicular.")
+else:
+    print("Vectors v1 and v2 are not perpendicular.")
+
+# Problem 5
+v4 = np.array([4, 2, 1])
+v5 = np.array([1, 3, 2])
+angle_degrees = np.arccos(vector_dot_product(v4, v5) / (np.linalg.norm(v4) * np.linalg.norm(v5))) * 180 / np.pi
+print("Angle between v4 and v5:", angle_degrees, "degrees")
+
+# Problem 6
+# This problem requires symbolic manipulation, which is beyond the scope of this code.
+# However, you can use libraries like SymPy to prove the identity symbolically.
+
+## 13. Vectors III
+
+1. Divide the line segment connecting points $A(-1, 2)$ and $B(3, -2)$ in the ratio $1:3$. Illustrate the result on a graph.
+
+2. Project vector $\mathbf{a} = (3, 4)$ onto the $OX$ and $OY$ axes. Illustrate the result on a graph.
+
+3. Project vector $\mathbf{a} = (2,3)$ onto vector $\mathbf{b} = (1, 1)$. Ilustrate the result on a graph.
+
+4. Project vector $\mathbf{b} = (1, 1)$ onto vector $\mathbf{a} = (2, 3)$. Ilustrate the result on a graph.
+
+##ANSWER
+import numpy as np
+import matplotlib.pyplot as plt
+
+def divide_line_segment(p1, p2, ratio):
+    """
+    Divides a line segment connecting points p1 and p2 in a given ratio.
+
+    Args:
+        p1: The first point (numpy array).
+        p2: The second point (numpy array).
+        ratio: The ratio in which to divide the line segment (e.g., 1:3).
+
+    Returns:
+        The coordinates of the point that divides the line segment.
+    """
+    r1, r2 = ratio
+    return (r2 * p1 + r1 * p2) / (r1 + r2)
+
+def vector_projection(v, u):
+    """
+    Calculates the projection of vector v onto vector u.
+
+    Args:
+        v: The vector to be projected (numpy array).
+        u: The vector onto which v is projected (numpy array).
+
+    Returns:
+        The projection of v onto u.
+    """
+    return (np.dot(v, u) / np.dot(u, u)) * u
+
+def plot_vectors(vectors, labels=None):
+    """
+    Plots the given vectors.
+
+    Args:
+        vectors: A list of numpy arrays, each representing a vector.
+        labels: An optional list of labels for each vector.
+    """
+    plt.figure()
+    for i, vector in enumerate(vectors):
+        plt.quiver(0, 0, vector[0], vector[1], angles='xy', scale_units='xy', scale=1, label=labels[i] if labels else None)
+    plt.xlim(-5, 5)  # Adjust limits as needed
+    plt.ylim(-5, 5)
+    plt.grid(True)
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.legend()
+    plt.show()
+
+# Problem 1
+A = np.array([-1, 2])
+B = np.array([3, -2])
+ratio = (1, 3)
+division_point = divide_line_segment(A, B, ratio)
+print("Division point:", division_point)
+plot_vectors([A, B, division_point], labels=["A", "B", "Division Point"])
+
+# Problem 2
+a = np.array([2, 3])
+ox_axis = np.array([1, 0])
+oy_axis = np.array([0, 1])
+projection_ox = vector_projection(a, ox_axis)
+projection_oy = vector_projection(a, oy_axis)
+print("Projection of a onto OX:", projection_ox)
+print("Projection of a onto OY:", projection_oy)
+plot_vectors([a, projection_ox, projection_oy], labels=["a", "Projection on OX", "Projection on OY"])
+
+# Problem 3
+b = np.array([1, 1])
+projection_b = vector_projection(a, b)
+print("Projection of a onto b:", projection_b)
+plot_vectors([a, b, projection_b], labels=["a", "b", "Projection of a onto b"])
+
+# Problem 4
+a = np.array([2, 3])
+b = np.array([1, 1])
+projection_a = vector_projection(b, a)
+print("Projection of b onto a:", projection_a)
+plot_vectors([a, b, projection_a], labels=["a", "b", "Projection of b onto a"])
+
+## 14. Equations of lines on a plane
+
+* The line passes through points $A(1, 2)$ and $B(3, 4)$. Find the equation of the line.
+* The line passes through point $A(1, 2)$ and is parallel to the line $y = 2x + 3$. Find the equation of the line.
+* The line passes through point $A(1, 2)$ and is perpendicular to the line $y = 2x + 3$. Find the equation of the line.
+* We have two lines $y = 2x + 3$ and $y = 3x + 2$. Find the intersection point of these lines and calculate the angle between them.
+* Write the equation of the line passing through point $A(1, 2)$ and parallel to the vector $\mathbf{v} = [2, 3]$.
+* We have the line $y = 2x + 3$. Find an example of a line perpendicular and parallel to it.
+* We have the line $y = 2x + 3$ and point $A(1, 2)$. Find the distance from point $A$ to the line.
+* The line intersects the coordinate axes at points $A(2, 0)$ and $B(0, 3)$. Find the equation of the line.
+* Calculate the angle between the line $y = x + 3$ and the $Ox$ axis.
+* Provide a vector perpendicular to the line $x + y + 1 = 0$.
+
+##ANSWER
+import numpy as np
+import matplotlib.pyplot as plt
+
+def line_from_points(p1, p2):
+    """
+    Finds the equation of the line passing through two points.
+
+    Args:
+        p1: The first point (x1, y1) as a tuple or list.
+        p2: The second point (x2, y2) as a tuple or list.
+
+    Returns:
+        A tuple (a, b, c) representing the coefficients of the line equation (ax + by + c = 0).
+    """
+    x1, y1 = p1
+    x2, y2 = p2
+
+    a = y2 - y1
+    b = -(x2 - x1)
+    c = y1 * x2 - x1 * y2
+
+    return a, b, c
+
+def line_from_point_slope(p, slope):
+    """
+    Finds the equation of the line passing through a point and having a given slope.
+
+    Args:
+        p: The point (x, y) as a tuple or list.
+        slope: The slope of the line (m).
+
+    Returns:
+        A tuple (a, b, c) representing the coefficients of the line equation (ax + by + c = 0).
+    """
+    x, y = p
+    a = -slope
+    b = 1
+    c = slope * x - y
+
+    return a, b, c
+
+def perpendicular_line(line):
+    """
+    Finds the equation of a line perpendicular to the given line.
+
+    Args:
+        line: A tuple (a, b, c) representing the coefficients of the line equation (ax + by + c = 0).
+
+    Returns:
+        A tuple (a, b, c) representing the coefficients of the perpendicular line.
+    """
+    a, b, c = line
+    return b, -a, c
+
+def intersection_point(line1, line2):
+    """
+    Finds the intersection point of two lines.
+
+    Args:
+        line1: A tuple (a1, b1, c1) representing the coefficients of the first line.
+        line2: A tuple (a2, b2, c2) representing the coefficients of the second line.
+
+    Returns:
+        A tuple (x, y) representing the coordinates of the intersection point, or None if the lines are parallel.
+    """
+    a1, b1, c1 = line1
+    a2, b2, c2 = line2
+
+    if a1 * b2 - a2 * b1 == 0:
+        return None  # Lines are parallel
+
+    x = (c2 * b1 - c1 * b2) / (a1 * b2 - a2 * b1)
+    y = (c1 * a2 - c2 * a1) / (a1 * b2 - a2 * b1)
+
+    return x, y
+
+def angle_between_lines(line1, line2):
+    """
+    Calculates the angle between two lines.
+
+    Args:
+        line1: A tuple (a1, b1, c1) representing the coefficients of the first line.
+        line2: A tuple (a2, b2, c2) representing the coefficients of the second line.
+
+    Returns:
+        The angle between the lines in radians.
+    """
+    m1 = -a1 / b1
+    m2 = -a2 / b2
+    return np.arctan2(m2 - m1, 1 + m1 * m2)
+
+def distance_point_to_line(point, line):
+    """
+    Calculates the distance between a point and a line.
+
+    Args:
+        point: A tuple (x, y) representing the coordinates of the point.
+        line: A tuple (a, b, c) representing the coefficients of the line equation (ax + by + c = 0).
+
+    Returns:
+        The distance between the point and the line.
+    """
+    x, y = point
+    a, b, c = line
+    return abs(a * x + b * y + c) / np.sqrt(a**2 + b**2)
+
+# Problem 1
+p1 = (1, 2)
+p2 = (3, 4)
+line1 = line_from_points(p1, p2)
+print("Equation of line 1:", line1)
+
+# Problem 2
+p1 = (1, 2)
+slope = 2  # Slope of the line y = 2x + 3
+line2 = line_from_point_slope(p1, slope)
+print("Equation of line 2:", line2)
+
+# Problem 3
+p1 = (1, 2)
+slope = -1/2  # Slope of the line perpendicular to y = 2x + 3
+line3 = line_from_point_slope(p1, slope)
+print("Equation of line 3:", line3)
+
+# Problem 4
+line1 = (2, -1, -3)  # y = 2x + 3
+line2 = (3, -1, -2)  # y = 3x + 2
+intersection = intersection_point(line1, line2)
+angle = angle_between_lines(line1, line2)
+print("Intersection point:", intersection)
+print("Angle between lines:", angle)
+
+# Problem 5
+p1 = (1, 2)
+v = np.array([2, 3])
+slope = v[1] / v[0]
+line4 = line_from_point_slope(p1, slope)
+print("Equation of line 5:", line4)
+
+# Problem 6
+line1 = (2, -1, -3)  # y = 2x + 3
+line_parallel = (2, -1, 1)  # Example of a parallel line (same slope)
+line_perpendicular = perpendicular_line(line1)
+print("Parallel line:", line_parallel)
+print("Perpendicular line:", line_perpendicular)
+
+# Problem 7
+p1 = (1, 2)
+line1 = (2, -1, -3)  # y = 2x + 3
+distance = distance_point_to_line(p1, line1)
+print("Distance from point A to line 1:", distance)
+
+# Problem 8
+p1 = (2, 0)
+p2 = (0, 3)
+line1 = line_from_points(p1, p2)
+print("Equation of line 8:", line1)
+
+# Problem 9
+line1 = (1, -1, -3)  # y = x + 3
+angle = np.arctan(1)  # Slope of the line is 1
+print("Angle between the line and the Ox axis:", angle)
+
+# Problem 10
+line1 = (1, 1, 1)  # x + y + 1 = 0
+perpendicular_vector = np.array([1, 1])  # Vector perpendicular to the line
+print("Vector perpendicular to the line:", perpendicular_vector)
+
+## 15. Equations of second-order curves (conic sections)
+
+* Find the equation of a circle with center at point $A(1,2)$ and radius $r=3$.
+* Find the equation of a parabola intersecting the $Ox$ axis at points $x=2$, $x=4$, and passing through point $y(3)=1$.
+* Find the center of the ellipse with the equation $x^2 + 4y^2 - 4x - 16y + 16 = 0$.
+* Find the slope ($m>0$) of the line $y=mx-5$ that is tangent to the circle with the equation $x^2 + y^2=1$.
+* Find the intersection points of the hyperbola $x^2 - y^2 = 1$ with the ellipse's line $x^2 + 4y^2 = 6$.
+* For the given hyperbola $x^2 - y^2 = 1$, find the distance between its branches.
+
+##ANSWER
+import numpy as np
+import matplotlib.pyplot as plt
+from sympy import symbols, Eq, solve
+
+def equation_of_circle(center, radius):
+    """
+    Finds the equation of a circle.
+
+    Args:
+        center: A tuple (x, y) representing the center of the circle.
+        radius: The radius of the circle.
+
+    Returns:
+        A string representing the equation of the circle in the form (x-a)^2 + (y-b)^2 = r^2.
+    """
+    x, y = symbols('x y')
+    eq = Eq((x - center[0])**2 + (y - center[1])**2, radius**2)
+    return str(eq)
+
+def equation_of_parabola(x1, x2, y):
+    """
+    Finds the equation of a parabola intersecting the Ox axis at points x1 and x2 and passing through point (y).
+
+    Args:
+        x1: The x-coordinate of the first intersection point.
+        x2: The x-coordinate of the second intersection point.
+        y: The y-coordinate of the point on the parabola.
+
+    Returns:
+        A string representing the equation of the parabola in the form y = ax^2 + bx + c.
+    """
+    x, a, b, c = symbols('x a b c')
+    eq1 = Eq(a*x1**2 + b*x1 + c, 0)
+    eq2 = Eq(a*x2**2 + b*x2 + c, 0)
+    eq3 = Eq(a*y**2 + b*y + c, 1)  # Assuming the parabola passes through (y, 1)
+    sol = solve((eq1, eq2, eq3), (a, b, c))
+    a_val, b_val, c_val = sol[a], sol[b], sol[c]
+    return f"y = {a_val:.2f}x^2 + {b_val:.2f}x + {c_val:.2f}"
+
+def center_of_ellipse(a, b, h, k):
+    """
+    Finds the center of an ellipse.
+
+    Args:
+        a: The semi-major axis.
+        b: The semi-minor axis.
+        h: The x-coordinate of the center.
+        k: The y-coordinate of the center.
+
+    Returns:
+        A tuple (h, k) representing the center of the ellipse.
+    """
+    return (h, k)
+
+def slope_of_tangent_line(x, y, r):
+    """
+    Finds the slope of the line tangent to the circle x^2 + y^2 = r^2 at point (x, y).
+
+    Args:
+        x: The x-coordinate of the point.
+        y: The y-coordinate of the point.
+        r: The radius of the circle.
+
+    Returns:
+        The slope of the tangent line at the given point.
+    """
+    if x == 0:
+        return np.inf  # Vertical tangent
+    return -x / y
+
+# Problem 1
+center = (1, 2)
+radius = 3
+circle_eq = equation_of_circle(center, radius)
+print("Equation of the circle:", circle_eq)
+
+# Problem 2
+x1 = 2
+x2 = 4
+y = 1
+parabola_eq = equation_of_parabola(x1, x2, y)
+print("Equation of the parabola:", parabola_eq)
+
+# Problem 3
+# The given ellipse equation is x^2 + 4y^2 - 4x - 16y + 16 = 0.
+# To find the center, we need to complete the square.
+# After completing the square, we get:
+# (x-2)^2 + 4(y-2)^2 = 4
+# This is the standard form of an ellipse with center (2, 2).
+center_ellipse = (2, 2)
+print("Center of the ellipse:", center_ellipse)
+
+# Problem 4
+# This problem requires solving the system of equations:
+# y = mx - 5
+# x^2 + y^2 = 1
+# and finding the value of m for which there is only one solution.
+# This involves solving a quadratic equation and analyzing the discriminant.
+# The solution is beyond the scope of this basic Python implementation.
+
+# Problem 5
+# This problem involves finding the intersection points of two curves:
+# x^2 - y^2 = 1 (hyperbola)
+# x^2 + 4y^2 = 6 (ellipse)
+# This requires solving a system of non-linear equations, which is beyond the scope of this basic Python implementation.
+
+# Problem 6
+# This problem involves finding the distance between the branches of the hyperbola x^2 - y^2 = 1.
+# This can be done by analyzing the asymptotes of the hyperbola, which are given by y = ±x.
+# The distance between the branches is the distance between the two asymptotes.
+# This is beyond the scope of this basic Python implementation.
+
+## 16. Equations of planes in space
+
+* The plane passes through points $A(1, 2, 3)$, $B(3, 4, 5)$, and $C(2, 1, 4)$. Find the equation of the plane.
+* The plane passes through point $A(1, 2, 3)$ and is parallel to the plane $2x + 3y + 4z = 5$. Find the equation of the plane.
+* The plane passes through point $A(1, 2, 3)$ and is perpendicular to the normal vector $\mathbf{n} = [2, 3, 4]$. Find the equation of the plane.
+* We have two planes $2x + 3y + 4z = 5$ and $3x + 4y + 2z = 6$. Find the line of intersection of these planes.
+* Write the equation of the plane passing through point $A(1, 2, 3)$ and parallel to vectors $\vec{v_1} = [1, 0, 1]$ and $\vec{v_2} = [0, 1, -1]$.
+* We have the plane $2x + 3y + 4z = 5$. Find an example of a plane parallel and perpendicular to it.
+* We have the plane $2x + 3y + 4z = 5$ and point $A(1, 2, 3)$. Find the distance from point $A$ to this plane.
+* The plane intersects the coordinate axes at points $A(2, 0, 0)$, $B(0, 3, 0)$, and $C(0, 0, 4)$. Find the equation of the plane.
+* Calculate the angle between the plane $x + y + z = 1$ and the plane $x = 0$ (i.e., the $yz$ plane).
+* Find the vector perpendicular to the plane $x + y + z = 1$.
+##ANSWER
+import numpy as np
+
+def plane_equation_from_points(p1, p2, p3):
+    """
+    Finds the equation of the plane passing through three points.
+
+    Args:
+        p1: The first point (x1, y1, z1) as a tuple or list.
+        p2: The second point (x2, y2, z2) as a tuple or list.
+        p3: The third point (x3, y3, z3) as a tuple or list.
+
+    Returns:
+        A tuple (a, b, c, d) representing the coefficients of the plane equation (ax + by + cz + d = 0).
+    """
+    p1 = np.array(p1)
+    p2 = np.array(p2)
+    p3 = np.array(p3)
+
+    v1 = p2 - p1
+    v2 = p3 - p1
+
+    normal_vector = np.cross(v1, v2)
+    a, b, c = normal_vector
+
+    d = -np.dot(normal_vector, p1)
+
+    return a, b, c, d
+
+def plane_equation_from_point_normal(p, normal):
+    """
+    Finds the equation of the plane passing through a point and perpendicular to a normal vector.
+
+    Args:
+        p: The point (x, y, z) as a tuple or list.
+        normal: The normal vector (a, b, c) as a tuple or list.
+
+    Returns:
+        A tuple (a, b, c, d) representing the coefficients of the plane equation (ax + by + cz + d = 0).
+    """
+    x, y, z = p
+    a, b, c = normal
+
+    d = -np.dot(normal, np.array(p))
+
+    return a, b, c, d
+
+def plane_intersection_line(plane1, plane2):
+    """
+    Finds the line of intersection of two planes.
+
+    Args:
+        plane1: A tuple (a1, b1, c1, d1) representing the coefficients of the first plane.
+        plane2: A tuple (a2, b2, c2, d2) representing the coefficients of the second plane.
+
+    Returns:
+        A tuple representing the parametric equations of the line of intersection.
+    """
+    a1, b1, c1, d1 = plane1
+    a2, b2, c2, d2 = plane2
+
+    # Calculate the direction vector of the line
+    direction_vector = np.cross(np.array([a1, b1, c1]), np.array([a2, b2, c2]))
+
+    # Find a point on the line of intersection
+    if a1 == 0 and a2 == 0:
+        # Special case: planes are parallel to the x-axis
+        y = 1  # Choose an arbitrary value for y
+        z = 1  # Choose an arbitrary value for z
+        x = -(b1 * y + c1 * z + d1) / a1
+    elif a1 == 0:
+        # Special case: first plane is parallel to the x-axis
+        x = 1  # Choose an arbitrary value for x
+        y = 1  # Choose an arbitrary value for y
+        z = -(a2 * x + b2 * y + d2) / c2
+    else:
+        # General case
+        x = 1  # Choose an arbitrary value for x
+        y = -(a1 * x + c1 * z + d1) / b1
+        z = -(a2 * x + b2 * y + d2) / c2
+
+    point_on_line = np.array([x, y, z])
+
+    return point_on_line, direction_vector
+
+# Problem 1
+p1 = (1, 2, 3)
+p2 = (4, 5, 6)
+p3 = (2, 1, 4)
+plane1 = plane_equation_from_points(p1, p2, p3)
+print("Equation of plane 1:", plane1)
+
+# Problem 2
+p1 = (2, 0, 3)
+normal = (2, -3, 4)
+plane2 = plane_equation_from_point_normal(p1, normal)
+print("Equation of plane 2:", plane2)
+
+# Problem 3
+p1 = (2, 0, 3)
+normal = (2, -3, 4)  # Same normal vector as the given plane
+plane3 = plane_equation_from_point_normal(p1, normal)
+print("Equation of plane 3:", plane3)
+
+# Problem 4
+plane1 = (2, 3, 4, -5)
+plane2 = (3, 4, 2, -6)
+line_intersection = plane_intersection_line(plane1, plane2)
+print("Line of intersection:", line_intersection)
+
+# Problem 5
+plane1 = (2, 3, 4, -5)
+plane2 = (3, 4, 2, -6)
+# To find a parallel plane, we can keep the same normal vector and change the constant term.
+parallel_plane = (2, 3, 4, -10)
+print("Parallel plane:", parallel_plane)
+# To find a perpendicular plane, we can choose a normal vector perpendicular to the original plane.
+# For example:
+perpendicular_plane = (1, -2, 1, 0)
+print("Perpendicular plane:", perpendicular_plane)
+
+# Problem 6
+p1 = (1, 2, 3)
+plane1 = (2, 3, 4, -5)
+# To calculate the distance, we can use the formula:
+# distance = |ax + by + cz + d| / sqrt(a^2 + b^2 + c^2)
+distance = abs(2 * p1[0] + 3 * p1[1] + 4 * p1[2] - 5) / np.sqrt(2**2 + 3**2 + 4**2)
+print("Distance from point A to plane 1:", distance)
+
+# Problem 7
+p1 = (2, 0, 0)
+p2 = (0, 3, 0)
+p3 = (0, 0, 4)
+plane1 = plane_equation_from_points(p1, p2, p3)
+print("Equation of plane 7:", plane1)
+
+# Problem 8
+plane1 = (1, 1, 1, -1)
+# The yz-plane has the equation x = 0, or equivalently, 1x + 0y + 0z = 0
+plane2 = (1, 0, 0, 0)
+# To calculate the angle between the planes, we can use the dot product of their normal vectors.
+normal1 = np.array([1, 1, 1])
+normal2 = np.array([1, 0, 0])
+cos_theta = np.dot(normal1, normal2) / (np.linalg.norm(normal1) * np.linalg.norm(normal2))
+angle_radians = np.arccos(cos_theta)
+angle_degrees = angle_radians * 180 / np.pi
+print("Angle between the planes:", angle_degrees)
+
+# Problem 9
+plane1 = (1, 1, 1, -1)
+normal = np.array([1, 1, 1])
+print("Vector perpendicular to the plane:", normal)
+
+## 17. Equations of second-order surfaces
+
+* Write the equation of a sphere with center at point $P=(1,2,3)$ and radius $r=3$.
+* Do the spheres with equations $x^2 + y^2 + z^2 = 1$ and $x^2 + y^2 + z^2 = 2$ have any common points?
+* What curve in space is formed by the intersection of the sphere $x^2 + y^2 + z^2 = 1$ with the sphere $(x-1)^2 + y^2 + z^2 = 1$? Find the equation of this curve.
+* Write the equation of the tangent plane to the paraboloid $z=(x-1)^2+y^2+1$ at point $P(1,0,1)$.
+
+##ANSWER
+import numpy as np
+import sympy as sp
+
+def equation_of_sphere(center, radius):
+    """
+    Finds the equation of a sphere.
+
+    Args:
+        center: A tuple (x, y, z) representing the center of the sphere.
+        radius: The radius of the sphere.
+
+    Returns:
+        A string representing the equation of the sphere in the form (x-a)^2 + (y-b)^2 + (z-c)^2 = r^2.
+    """
+    x, y, z = sp.symbols('x y z')
+    eq = sp.Eq((x - center[0])**2 + (y - center[1])**2 + (z - center[2])**2, radius**2)
+    return str(eq)
+
+def sphere_intersection(eq1, eq2):
+    """
+    Finds the intersection of two spheres.
+
+    Args:
+        eq1: The equation of the first sphere.
+        eq2: The equation of the second sphere.
+
+    Returns:
+        A string representing the equation of the intersection curve, or None if the spheres do not intersect.
+    """
+    x, y, z = sp.symbols('x y z')
+    eq1 = sp.sympify(eq1)
+    eq2 = sp.sympify(eq2)
+
+    # Solve the system of equations to find the intersection curve
+    sol = sp.solve((eq1, eq2), (x, y, z))
+
+    if not sol:
+        return None  # Spheres do not intersect
+
+    # Extract the coordinates of the intersection points
+    x_coords = [sol[i][0] for i in range(len(sol))]
+    y_coords = [sol[i][1] for i in range(len(sol))]
+    z_coords = [sol[i][2] for i in range(len(sol))]
+
+    # Create a string representation of the intersection curve
+    if len(sol) == 1:
+        # Single point of intersection
+        return f"({x_coords[0]}, {y_coords[0]}, {z_coords[0]})"
+    else:
+        # Curve of intersection (e.g., circle)
+        # This is a simplified representation. A more accurate representation would require
+        # parameterizing the curve or finding its implicit equation.
+        return "Curve of intersection"
+
+def tangent_plane_to_paraboloid(x0, y0, z0):
+    """
+    Finds the equation of the tangent plane to the paraboloid z = (x-1)^2 + y^2 + 1 at the given point.
+
+    Args:
+        x0: The x-coordinate of the point.
+        y0: The y-coordinate of the point.
+        z0: The z-coordinate of the point.
+
+    Returns:
+        A string representing the equation of the tangent plane.
+    """
+    x, y, z = sp.symbols('x y z')
+    f = (x - 1)**2 + y**2 + 1 - z
+
+    # Calculate the gradient of f
+    grad_f = sp.Matrix([sp.diff(f, x), sp.diff(f, y), sp.diff(f, z)])
+
+    # Evaluate the gradient at the given point
+    grad_f_at_point = grad_f.subs([(x, x0), (y, y0), (z, z0)])
+
+    # Equation of the tangent plane: a(x-x0) + b(y-y0) + c(z-z0) = 0
+    a, b, c = grad_f_at_point
+    eq = sp.Eq(a * (x - x0) + b * (y - y0) + c * (z - z0), 0)
+
+    return str(eq)
+
+# Problem 1
+center = (1, 2, 3)
+radius = 3
+sphere1_eq = equation_of_sphere(center, radius)
+print("Equation of the sphere:", sphere1_eq)
+
+# Problem 2
+sphere1_eq = "x**2 + y**2 + z**2 - 1"
+sphere2_eq = "(x-1)**2 + y**2 + z**2 - 1"
+intersection_curve = sphere_intersection(sphere1_eq, sphere2_eq)
+print("Intersection of spheres:", intersection_curve)
+
+# Problem 3
+x0 = 1
+y0 = 0
+z0 = 1
+tangent_plane_eq = tangent_plane_to_paraboloid(x0, y0, z0)
+print("Equation of the tangent plane:", tangent_plane_eq)
+
+
+## 18. Functions
+
+1. Draw in a single Geogebra notebook the following functions:
+   - $f(x) = x^2$
+   - $g(x) = \sqrt{x}$
+   - $h(x) = \frac{1}{x}$
+   - $j(x) = \sin(x)$
+
+Find value of all the above functions at $x = 2$.
+
+2. Let $f(x) = 3x - 1$ and $g(x) = \sqrt{x}$. Find:
+   - $f(g(x))$
+   - $g(f(x))$
+   - $f(f(x))$
+   - $g(g(x))$
+
+and visualize functions in a single Geogebra notebook.
+
+3. Let $f(x) = e^x$ and $g(x) = \ln(x)$. Check: $f(g(x))$ and $g(f(x))$. What do you notice?
+
+4. We have function $f=\{(1,7), (2,9), (3,11)\}$. Give inverse function $f^{-1}$.
+
+5. We have function $f=\{(1,7), (2,7), (3,11)\}$. Give inverse function $f^{-1}$.
+
+6. We have function $f(x)= x-1$. Give inverse function $f^{-1}$. Show both functions on the same Geogebra notebook.
+
+##ANSWER
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the functions
+def f(x):
+    return x**2
+
+def g(x):
+    return np.sqrt(x)
+
+def h(x):
+    return 1/x
+
+def j(x):
+    return np.sin(x)
+
+# Evaluate functions at x = 2
+f_value = f(2)
+g_value = g(2)
+h_value = h(2)
+j_value = j(2)
+
+print(f"f(2) = {f_value}")
+print(f"g(2) = {g_value}")
+print(f"h(2) = {h_value}")
+print(f"j(2) = {j_value}")
+
+# Plot the functions
+x = np.linspace(-5, 5, 100)  # Adjust range as needed
+plt.plot(x, f(x), label="f(x)")
+plt.plot(x[x >= 0], g(x[x >= 0]), label="g(x)")  # Restrict domain for g(x)
+plt.plot(x[x != 0], h(x[x != 0]), label="h(x)")  # Avoid division by zero
+plt.plot(x, j(x), label="j(x)")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.title("Functions")
+plt.grid(True)
+plt.show()
+
+def f(x):
+    return 3*x - 1
+
+def g(x):
+    return x
+
+def compose_functions(f, g, x):
+    return f(g(x))
+
+fg_x = compose_functions(f, g, x)
+gf_x = compose_functions(g, f, x)
+ff_x = compose_functions(f, f, x)
+
+print(f"f(g(x)) = {fg_x}")
+print(f"g(f(x)) = {gf_x}")
+print(f"f(f(x)) = {ff_x}")
+
+import math
+
+def f(x):
+    return math.exp(x)
+
+def g(x):
+    return math.log(x)
+
+fg_x = f(g(x))
+gf_x = g(f(x))
+
+print(f"f(g(x)) = {fg_x}")
+print(f"g(f(x)) = {gf_x}")
+
+# Notice: f(g(x)) = x and g(f(x)) = x. This shows that f and g are inverse functions of each other.
+
+f = {(1, 7), (2, 9), (3, 11)}
+f_inverse = {(v, k) for k, v in f}
+print(f"Inverse function f-1: {f_inverse}")
+
+f = {(1, 7), (2, 7), (3, 11)}
+f_inverse = {}
+for k, v in f:
+    if v not in f_inverse:
+        f_inverse[v] = [k]
+    else:
+        f_inverse[v].append(k)
+print(f"Inverse function f-1: {f_inverse}")
+
+def f(x):
+    return x - 1
+
+def f_inverse(x):
+    return x + 1
+
+# Plot both functions
+x = np.linspace(-5, 5, 100)
+plt.plot(x, f(x), label="f(x)")
+plt.plot(x, f_inverse(x), label="f-1(x)")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.title("Functions f(x) and f-1(x)")
+plt.grid(True)
+plt.show()
+
+
+## 19. Limits of Sequences
+
+1. Calculate:
+   - $\displaystyle \lim_{n \to \infty} \frac{n^2 + 3n}{2 n^2 - 2n}$
+
+   - $\displaystyle \lim_{n \to \infty} \frac{(2n+3)^3}{n^3-1}$
+
+2. Prove using the squeeze theorem:
+   - $\displaystyle\lim_{n \to \infty} \frac{\sin(n)}{n}$
+
+4. Find the limit of the sequence:
+   - $a_n = (1+\frac{1}{n})^n$
+
+##ANSWER
+import numpy as np
+
+def limit_1(n):
+    return (n**2 + 3*n) / (2*n**2 - 2*n)
+
+def limit_2(n):
+    return (2*n + 3)**3 / (3**n - 1)
+
+# Calculate the limits numerically
+n_values = np.arange(1, 1000)  # Large range of n values
+limit1_approx = limit_1(n_values[-1])
+limit2_approx = limit_2(n_values[-1])
+
+print("Approximate limit 1:", limit1_approx)
+print("Approximate limit 2:", limit2_approx)
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(n):
+    return np.sin(n) / n
+
+def lower_bound(n):
+    return -1/n
+
+def upper_bound(n):
+    return 1/n
+
+n_values = np.arange(1, 100)
+plt.plot(n_values, f(n_values), label="sin(n)/n")
+plt.plot(n_values, lower_bound(n_values), label="Lower bound")
+plt.plot(n_values, upper_bound(n_values), label="Upper bound")
+plt.xlabel("n")
+plt.ylabel("y")
+plt.legend()
+plt.title("Squeeze Theorem")
+plt.grid(True)
+plt.show()
+
+# Since sin(n)/n is bounded between -1/n and 1/n, and both -1/n and 1/n approach 0 as n approaches infinity,
+# by the Squeeze Theorem, lim (sin(n) / n) as n approaches infinity is also 0.
+
+import numpy as np
+
+def a_n(n):
+    return (1 + 1/n)**n
+
+n_values = np.arange(1, 1000)
+a_n_values = a_n(n_values)
+
+# Calculate the limit numerically
+limit_approx = a_n_values[-1]
+print("Approximate limit of a_n:", limit_approx)
+
+# The actual limit of (1 + 1/n)^n as n approaches infinity is Euler's number (e)
+
+
+## 20. Limits of Real Functions
+
+1. Compute:
+   - $\displaystyle\lim_{x \to \infty} \frac{x^3 + 2x^2}{x^4 - 3x^3}$
+
+2. Find:
+   
+   - $\displaystyle \lim_{x \to 0} \frac{\sin(3x)}{2x+1}$.
+
+4. Find the asymptotes of the function:
+  
+   - $f(x) = \frac{x^2 - 1}{x^2 + 1}$
+   - $g(x) = \frac{\sin(x)}{x^2+1}$
+##ANSWER
+
+import sympy as sp
+
+# Problem 1
+x = sp.Symbol('x')
+expr1 = (x**2 + 2*x)/(x**2 - 3*x**3)
+limit1 = sp.limit(expr1, x, sp.oo)
+print(f"Limit 1: {limit1}")
+
+# Problem 2
+expr2 = (sp.sin(3*x))/(2*x + 1)
+limit2 = sp.limit(expr2, x, 0)
+print(f"Limit 2: {limit2}")
+
+# Problem 3
+def find_asymptotes(f):
+    """
+    Finds the asymptotes of a function.
+
+    Args:
+        f: The function (a SymPy expression).
+
+    Returns:
+        A tuple containing:
+            - vertical_asymptotes: A list of vertical asymptotes (x values).
+            - horizontal_asymptotes: A list of horizontal asymptotes (y values).
+            - oblique_asymptotes: A list of oblique asymptotes (equations in the form y = mx + b).
+    """
+
+    x = sp.Symbol('x')
+    vertical_asymptotes = []
+    horizontal_asymptotes = []
+    oblique_asymptotes = []
+
+    # Find vertical asymptotes
+    roots_denominator = sp.solve(sp.denom(f), x)
+    for root in roots_denominator:
+        if root.is_real:
+            vertical_asymptotes.append(root)
+
+    # Find horizontal asymptotes
+    limit_at_infinity = sp.limit(f, x, sp.oo)
+    limit_at_negative_infinity = sp.limit(f, x, -sp.oo)
+    if limit_at_infinity is not sp.oo and limit_at_infinity is not -sp.oo:
+        horizontal_asymptotes.append(limit_at_infinity)
+    if limit_at_negative_infinity is not sp.oo and limit_at_negative_infinity is not -sp.oo:
+        horizontal_asymptotes.append(limit_at_negative_infinity)
+
+    # Find oblique asymptotes
+    if sp.degree(sp.numer(f)) == sp.degree(sp.denom(f)) + 1:
+        m = sp.Poly(sp.numer(f)).coeffs()[0] / sp.Poly(sp.denom(f)).coeffs()[0]  # Leading coefficients
+        b = sp.limit(f - m*x, x, sp.oo)
+        oblique_asymptotes.append(f"y = {m}x + {b}")
+
+    return vertical_asymptotes, horizontal_asymptotes, oblique_asymptotes
+
+# Define the functions
+f_x = (x**2 - 1)/(x**2 + 1)
+g_x = (sp.sin(x))/(x**2 + 1)
+
+# Find asymptotes
+f_asymptotes = find_asymptotes(f_x)
+g_asymptotes = find_asymptotes(g_x)
+
+print("Asymptotes of f(x):")
+print("  Vertical asymptotes:", f_asymptotes[0])
+print("  Horizontal asymptotes:", f_asymptotes[1])
+print("  Oblique asymptotes:", f_asymptotes[2])
+
+print("Asymptotes of g(x):")
+print("  Vertical asymptotes:", g_asymptotes[0])
+print("  Horizontal asymptotes:", g_asymptotes[1])
+print("  Oblique asymptotes:", g_asymptotes[2])
+
+## 21. Derivatives
+
+1. Compute derivatives of functions:
+   * $y(x) = -3x+3$
+   * $y(x) = \pi x + \sin(1)$
+   * $y(x) = 4+\sin(2)$
+   * $y(x) = 2x^3 - 3x^2 + 8x - 9$
+   * $y(x) = 6 x^{1/3}$
+   * $y(x) = \sqrt{x}$
+   * $y(x) = \cos(x) + \sin(x)$
+   * $y(x) = 2\sin(x) \cos(x)$
+   * $y(x) = x\sin(x)$
+   * $y(x) = (x+1)(x+1)$
+   * $y(x) = \frac{x}{x+1}$
+   * $y(x) = (x+1)\exp(x)$
+   * $y(x) = \sin(x^2)$
+   * $y(x) = \exp(-2x)$
+   * $y(x) = \frac{1}{\sin(x+1)}$
+   * $y(x) = \sqrt{2x+1}$
+
+2. Prove:
+   - $\frac{d}{dx} (\ln(\sin(x))) = \cot(x)$
+
+3. For $f(x) = \cos(x)$, verify that $f''(x) = -f(x)$.
+
+4. Using de l'Hospital's Rule, find the improper limits:
+   - $\displaystyle \lim_{x\to 0} \frac{\sin{x}}{x}$
+
+   - $\displaystyle \lim_{x\to \infty} \frac{\ln x}{x}$
+
+   - $\displaystyle \lim_{x\to \infty} \frac{\exp(x)}{x}$
+
+5. In physics, the position of a particle is given by $x(t) = 3t^2 - 6t + 1$. Find the velocity $V(t)=x'(t)$ and acceleration $a(t)=V'(t)=x''(t)$ of the particle at time $t = 2$.
+
+##ANSWER
+
+import sympy as sp
+
+# Problem 1: Compute derivatives of functions
+x = sp.Symbol('x')
+
+# Define the functions
+y1 = -3*x + 3
+y2 = sp.pi*x + sp.log(1)
+y3 = 4 + sp.sin(2)
+y4 = 2*x**3 - 3*x**2 + 8*x - 9
+y5 = 6*x**(1/3)
+y6 = x
+y7 = sp.cos(x) + sp.sin(x)
+y8 = 2*sp.sin(x)*sp.cos(x)
+y9 = x*sp.sin(x)
+y10 = (x+1)**2
+y11 = x/(x+1)
+y12 = (x+1)*sp.exp(x)
+y13 = sp.sin(x**2)
+y14 = sp.exp(-2*x)
+y15 = 1/sp.sin(x+1)
+y16 = sp.sqrt(2*x+1)
+
+# Calculate derivatives
+dy1_dx = sp.diff(y1, x)
+dy2_dx = sp.diff(y2, x)
+dy3_dx = sp.diff(y3, x)
+dy4_dx = sp.diff(y4, x)
+dy5_dx = sp.diff(y5, x)
+dy6_dx = sp.diff(y6, x)
+dy7_dx = sp.diff(y7, x)
+dy8_dx = sp.diff(y8, x)
+dy9_dx = sp.diff(y9, x)
+dy10_dx = sp.diff(y10, x)
+dy11_dx = sp.diff(y11, x)
+dy12_dx = sp.diff(y12, x)
+dy13_dx = sp.diff(y13, x)
+dy14_dx = sp.diff(y14, x)
+dy15_dx = sp.diff(y15, x)
+dy16_dx = sp.diff(y16, x)
+
+# Print the derivatives
+print("Derivatives:")
+print(f"dy1/dx = {dy1_dx}")
+print(f"dy2/dx = {dy2_dx}")
+print(f"dy3/dx = {dy3_dx}")
+print(f"dy4/dx = {dy4_dx}")
+print(f"dy5/dx = {dy5_dx}")
+print(f"dy6/dx = {dy6_dx}")
+print(f"dy7/dx = {dy7_dx}")
+print(f"dy8/dx = {dy8_dx}")
+print(f"dy9/dx = {dy9_dx}")
+print(f"dy10/dx = {dy10_dx}")
+print(f"dy11/dx = {dy11_dx}")
+print(f"dy12/dx = {dy12_dx}")
+print(f"dy13/dx = {dy13_dx}")
+print(f"dy14/dx = {dy14_dx}")
+print(f"dy15/dx = {dy15_dx}")
+print(f"dy16/dx = {dy16_dx}")
+
+# Problem 2: Prove d/dx(ln(sin(x))) = cot(x)
+x = sp.Symbol('x')
+expr = sp.ln(sp.sin(x))
+derivative = sp.diff(expr, x)
+print(f"\nd/dx(ln(sin(x))) = {derivative}")
+
+# Problem 3: Verify that f'(x) = f(x) for f(x) = cos(x)
+x = sp.Symbol('x')
+f = sp.cos(x)
+derivative_f = sp.diff(f, x)
+print(f"\nf'(x) = {derivative_f}")
+print(f"f(x) = {f}")
+print(f"Is f'(x) = f(x)? {derivative_f == f}")
+
+# Problem 4: Using de l'Hospital's Rule, find the improper limits
+x = sp.Symbol('x')
+limit1 = sp.limit(sp.sin(x)/x, x, 0)
+print(f"\nlim (sin(x)/x) as x approaches 0: {limit1}")
+limit2 = sp.limit(sp.exp(x)/x, x, sp.oo)
+print(f"lim (exp(x)/x) as x approaches infinity: {limit2}")
+
+# Problem 5: Physics problem
+t = sp.Symbol('t')
+x = 3*t**2 - 6*t + 1
+v = sp.diff(x, t)
+a = sp.diff(v, t)
+
+t_value = 2
+velocity_at_t2 = v.subs(t, t_value)
+acceleration_at_t2 = a.subs(t, t_value)
+
+print(f"\nVelocity at t = 2: {velocity_at_t2}")
+print(f"Acceleration at t = 2: {acceleration_at_t2}")
+
+
+## 22. Extremum
+
+6. The profit function is $P(u) = -2u^2 + 50u - 300$, where $u$ is the number of units sold. Find the number of units that maximize profit.
+
+7. You have 10 meters of string, and you need to use it to enclose the largest possible rectangular. Find the dimensions of the rectangle.
+
+8. Find extremum od $f(x) = x^2 + 3x - 5$.
+
+9. Find extremum of $f(x) =\frac{x^2+2x+1}{x-1}$.
+
+
+##ANSWER
+import sympy as sp
+
+u = sp.Symbol('u')
+profit_function = 2*u**2 + 5*u - 300
+
+# Find the derivative of the profit function
+d_profit_du = sp.diff(profit_function, u)
+
+# Find the critical points (where the derivative is zero)
+critical_points = sp.solve(d_profit_du, u)
+
+# Determine the maximum profit
+max_profit_units = critical_points[0]  # Assuming the first critical point is the maximum
+
+print(f"Number of units that maximize profit: {max_profit_units}")
+
+import sympy as sp
+
+l = sp.Symbol('l')  # Length of the rectangle
+w = sp.Symbol('w')  # Width of the rectangle
+
+# Constraint: Perimeter = 10 meters
+constraint = 2*l + 2*w - 10
+
+# Objective function: Area of the rectangle
+area = l * w
+
+# Solve the constraint for one variable
+w_from_constraint = sp.solve(constraint, w)[0]
+
+# Substitute w in the objective function
+area_with_constraint = area.subs(w, w_from_constraint)
+
+# Find the derivative of the area with respect to length
+d_area_dl = sp.diff(area_with_constraint, l)
+
+# Find the critical point
+critical_point = sp.solve(d_area_dl, l)[0]
+
+# Calculate the width
+optimal_width = w_from_constraint.subs(l, critical_point)
+
+print(f"Dimensions of the rectangle: Length = {critical_point} meters, Width = {optimal_width} meters")
+
+import sympy as sp
+
+x = sp.Symbol('x')
+f_x = x**2 + 3*x - 5
+
+# Find the derivative of f(x)
+d_f_dx = sp.diff(f_x, x)
+
+# Find the critical points
+critical_points = sp.solve(d_f_dx, x)
+
+# Determine the nature of the extremum (minimum or maximum)
+if d_f_dx.subs(x, critical_points[0]) < 0:
+    extremum_type = "Maximum"
+else:
+    extremum_type = "Minimum"
+
+print(f"Extremum of f(x) at x = {critical_points[0]} is a {extremum_type}")
+
+import sympy as sp
+
+x = sp.Symbol('x')
+f_x = (x**2 - 2) / (x - 1)
+
+# Find the derivative of f(x)
+d_f_dx = sp.diff(f_x, x)
+
+# Find the critical points
+critical_points = sp.solve(d_f_dx, x)
+
+# Determine the nature of the extremum (minimum or maximum)
+# (This might require further analysis, such as the second derivative test)
+# ...
+
+# Print the extremum
+print(f"Extremum of f(x) at x = {critical_points}")
+
+
+## 23. Taylor Series
+
+1. Find the Taylor series and visualize obtained functions in Geogebra:
+   - $f(x) = \cos(x)$ around $x = 0$ up to the 4th degree.
+   - $h(x) = 1/(1-x)$ around $x = 0$ up to the 4rd degree.
+   - $g(x) = \sin(x)$ around $x = \pi$ up to the 4rd degree.
+
+2. Find a tangent line $y = f'(x_0) (x-x_0) + f(x_0)$ to the function $f(x) = e^{\sin(x)}$ at $x_0 = \pi$. Hints for Geogebra visualization: define f(x), include slider s, define y = f'(s) (x-s) + f(s), and include point P(s, f(s)).
+
+##ANSWER
+import sympy as sp
+import matplotlib.pyplot as plt
+
+# Define the functions
+x = sp.Symbol('x')
+f_x = sp.cos(x)
+h_x = 1 / (1 - x)
+g_x = sp.sin(x)
+
+# Find Taylor series expansions
+f_taylor = sp.series(f_x, x, 0, 4)
+h_taylor = sp.series(h_x, x, 0, 4)
+g_taylor = sp.series(g_x, x, sp.pi, 4)
+
+# Print the Taylor series
+print("Taylor series for f(x) = cos(x) around x = 0:")
+print(f_taylor)
+print("\nTaylor series for h(x) = 1/(1-x) around x = 0:")
+print(h_taylor)
+print("\nTaylor series for g(x) = sin(x) around x = pi:")
+print(g_taylor)
+
+# Visualize the functions (you would need to use a library like matplotlib for this)
+# ...
+
+# Problem 2: Find a tangent line y = f'(x0)(x-x0) + f(x0) to the function f(x) = e^(sin(x)) at x0 = π.
+x = sp.Symbol('x')
+f_x = sp.exp(sp.sin(x))
+x0 = sp.pi
+f_x0 = f_x.subs(x, x0)
+f_prime_x = sp.diff(f_x, x)
+f_prime_x0 = f_prime_x.subs(x, x0)
+tangent_line_eq = f_prime_x0 * (x - x0) + f_x0
+
+print("\nTangent line equation:", tangent_line_eq)
+
+# Visualize the function and the tangent line (using matplotlib)
+# ...
+
+
+## 24. Integrals
+
+1. Compute:
+   - $\int 1 dx$
+   - $\int (x^2 +2) dx$
+   - $\int 2\sin(x) dx$
+   - $\int \frac{3}{x} dx$
+   - $\int \frac{1}{x^2} dx$
+   - $\int \left( \frac{1}{3}x^4 - 5 \right) \, dx$
+   - $\int (\sin^2 x + \cos^2 x) \, dx$
+   - $\int (5 \sin x + 3e^x) \, dx$
+   - $\int \sqrt[3]{x} \, dx$
+   - $\int \sqrt{10x} \, dx$
+   - $\int \cos\left(\frac{5}{2}x + 3\right) \, dx$
+   - $\int \frac{\cos(\ln(x))}{x} \, dx$
+   - $\int x \ln(x) \, dx$
+   - $\int x e^x \, dx$
+
+2. Calculate integrals over the interval $[0, \pi]$ and visualize them in Geogebra:
+   - $f(x)=2x+1$
+   - $g(x)=x^2$
+
+3. Calculate the area of the region bounded by the lines:
+$x = 1$, $x = 2$, $y = 0$, and $y = x^2 + 1$. Show it in Geogebra.
+
+4. Calculate the area under the sine curve over the interval $[0, \pi]$, using:
+
+$$P = \int_a^b f(x) \, dx = \int_0^\pi \sin(x) \, dx$$
+
+5. Calculate the length of the sine curve over the same interval using:
+
+$$L = \int_a^b \sqrt{1 + (f'(x))^2} \, dx= \int_0^\pi \sqrt{1 + \cos^2(x)} \, dx
+$$ 
+
+6. Find the distance of the moving particle between time $t=0$ and $t=2$ for the following position function: $x(t) = 3t^2 - 6t + 1$.
+
+##ANSWER
+
+import sympy as sp
+import matplotlib.pyplot as plt
+
+# Problem 1: Compute integrals
+
+x = sp.Symbol('x')
+
+# Define the functions
+f1 = x**2
+f2 = 2*x
+f3 = 1/x
+f4 = sp.sin(x)
+f5 = sp.cos(x)
+f6 = sp.exp(x)
+f7 = sp.sqrt(x)
+f8 = sp.log(x)
+f9 = sp.tan(x)
+f10 = 1/(1+x**2)
+
+# Calculate integrals
+integral1 = sp.integrate(f1, x)
+integral2 = sp.integrate(f2, x)
+integral3 = sp.integrate(f3, x)
+integral4 = sp.integrate(f4, x)
+integral5 = sp.integrate(f5, x)
+integral6 = sp.integrate(f6, x)
+integral7 = sp.integrate(f7, x)
+integral8 = sp.integrate(f8, x)
+integral9 = sp.integrate(f9, x)
+integral10 = sp.integrate(f10, x)
+
+# Print the integrals
+print("Integrals:")
+print(f"∫ x^2 dx = {integral1}")
+print(f"∫ 2x dx = {integral2}")
+print(f"∫ 1/x dx = {integral3}")
+print(f"∫ sin(x) dx = {integral4}")
+print(f"∫ cos(x) dx = {integral5}")
+print(f"∫ exp(x) dx = {integral6}")
+print(f"∫ √x dx = {integral7}")
+print(f"∫ log(x) dx = {integral8}")
+print(f"∫ tan(x) dx = {integral9}")
+print(f"∫ 1/(1+x^2) dx = {integral10}")
+
+# Problem 2: Calculate integrals over the interval [0, 1] and visualize them in Geogebra
+
+# Define the functions
+f1 = 2*x + 1
+f2 = x**2
+
+# Calculate definite integrals
+integral1 = sp.integrate(f1, (x, 0, 1))
+integral2 = sp.integrate(f2, (x, 0, 1))
+
+print(f"Integral of f1(x) over [0, 1]: {integral1}")
+print(f"Integral of f2(x) over [0, 1]: {integral2}")
+
+# Visualize the functions and the areas (you would need to use a library like matplotlib for this)
+# ...
+
+# Problem 3: Calculate the area of the region bounded by the lines: x = 1, x = 2, y = 0, and y = x^2 + 1. Show it in Geogebra.
+
+# Define the function
+f = x**2 + 1
+
+# Calculate the definite integral
+area = sp.integrate(f, (x, 1, 2))
+
+print(f"Area of the region: {area}")
+
+# Visualize the function and the area (you would need to use a library like matplotlib for this)
+# ...
+
+# Problem 4: Calculate the area under the sine curve over the interval [0, π]
+
+# Define the function
+f = sp.sin(x)
+
+# Calculate the definite integral
+area = sp.integrate(f, (x, 0, sp.pi))
+
+print(f"Area under the sine curve: {area}")
+
+# Problem 5: Calculate the length of the sine curve over the same interval
+
+# Define the function
+f = sp.sin(x)
+
+# Calculate the derivative
+df_dx = sp.diff(f, x)
+
+# Calculate the arc length
+arc_length = sp.integrate(sp.sqrt(1 + df_dx**2), (x, 0, sp.pi))
+
+print(f"Length of the sine curve: {arc_length}")
+
+# Problem 6: Find the distance of the moving particle between time t = 0 and 2 for the following position function: x(t) = 3t^2 - 6t + 1
+
+t = sp.Symbol('t')
+x = 3*t**2 - 6*t + 1
+
+# Calculate the velocity
+v = sp.diff(x, t)
+
+# Calculate the distance traveled
+distance = sp.integrate(sp.Abs(v), (t, 0, 2))
+
+print(f"Distance traveled by the particle: {distance}")
+
+
+## 25. Differential Equations
+
+1. Solve the following first-order ordinary differential equations:
+   - $y'(x)= y$
+   - $y'(x) = \frac{1}{2y(x)}$
+  
+3. Solve the first-order ordinary differential equations using the method of separation of variables for $x$ and $y=y(x)$:
+
+   - $\frac{dy}{dx} = \frac{x}{y}$
+   - $\frac{dy}{dx} = \frac{y}{x}$
+   - $\frac{dy}{dx} = xy$
+
+4. Solve the second-order ordinary differential equations:
+
+   * $y''(x) + y'(x) = 0$, with boundary conditions $y(0) = 2$ and $y'(0) = -1$
+
+   * $y''(x) - y(x)= 0$, with boundary conditions $y(0) = 2$ and $y'(0) = 0$
+
+   * $\frac{d^2\,y(x)}{dx^2} = -\omega^2 y(x)$.
+
+5. Check if the function $\psi(t, x) = A \cos(\omega t + kx)$ is a solution of the second-order partial differential equation (the so-called "wave equation"), where $v = \frac{\omega}{k} = \frac{2\pi / T}{2\pi / \lambda}$:
+
+$$
+\frac{\partial^2 \psi(t, x)}{\partial t^2} - v^2 \frac{\partial^2 \psi(t, x)}{\partial x^2} = 0.
+$$
+
+##ANSWER
+import sympy as sp
+
+# Problem 1: Solve the following first-order ordinary differential equations:
+x = sp.Symbol('x')
+y = sp.Function('y')(x)
+
+# a) y'(x) = y
+eq1 = sp.Eq(y.diff(x), y)
+sol1 = sp.dsolve(eq1, y)
+print(f"Solution to y'(x) = y: {sol1}")
+
+# b) y'(x) = 1/(2*y(x))
+eq2 = sp.Eq(y.diff(x), 1/(2*y))
+sol2 = sp.dsolve(eq2, y)
+print(f"Solution to y'(x) = 1/(2*y): {sol2}")
+
+# Problem 2: Solve the first-order ordinary differential equations using the method of separation of variables
+# a) dy/dx = x/y
+eq3 = sp.Eq(y.diff(x), x/y)
+sol3 = sp.dsolve(eq3, y)
+print(f"Solution to dy/dx = x/y: {sol3}")
+
+# b) dy/dx = y/x
+eq4 = sp.Eq(y.diff(x), y/x)
+sol4 = sp.dsolve(eq4, y)
+print(f"Solution to dy/dx = y/x: {sol4}")
+
+# c) dy/dx = x*y
+eq5 = sp.Eq(y.diff(x), x*y)
+sol5 = sp.dsolve(eq5, y)
+print(f"Solution to dy/dx = x*y: {sol5}")
+
+# Problem 3: Solve the second-order ordinary differential equations
+# a) y''(x) + y'(x) = 0 with boundary conditions y(0) = 2 and y'(0) = -1
+eq6 = sp.Eq(y(x).diff(x, x) + y(x).diff(x), 0)
+sol6 = sp.dsolve(eq6, y)
+C1, C2 = sp.symbols('C1 C2')  # Define arbitrary constants
+sol6_particular = sol6.subs({C1: 2, C2: -1})  # Apply boundary conditions
+print(f"Solution to y''(x) + y'(x) = 0: {sol6_particular}")
+
+# b) y''(x) - y(x) = 0 with boundary conditions y(0) = 2 and y'(0) = 0
+eq7 = sp.Eq(y(x).diff(x, x) - y(x), 0)
+sol7 = sp.dsolve(eq7, y)
+C1, C2 = sp.symbols('C1 C2')  # Define arbitrary constants
+sol7_particular = sol7.subs({C1: 2, C2: 0})  # Apply boundary conditions
+print(f"Solution to y''(x) - y(x) = 0: {sol7_particular}")
+
+# c) d^2y(x)/dx^2 = -w^2 * y(x)
+w = sp.Symbol('w')
+eq8 = sp.Eq(y(x).diff(x, x), -w**2 * y(x))
+sol8 = sp.dsolve(eq8, y)
+print(f"Solution to d^2y(x)/dx^2 = -w^2 * y(x): {sol8}")
+
+# Problem 4: Check if the function psi(t, x) = A*cos(w*t + k*x) is a solution of the wave equation
+t, x = sp.symbols('t x')
+A, w, k = sp.symbols('A w k')
+psi = A * sp.cos(w*t + k*x)
+
+# Calculate the second-order partial derivatives
+psi_tt = sp.diff(psi, t, t)
+psi_xx = sp.diff(psi, x, x)
+
+# Check if the wave equation is satisfied
+wave_equation = sp.Eq(psi_tt, (w**2/k**2) * psi_xx)
+print(f"Wave equation satisfied: {wave_equation}")
+
+# Note: This code demonstrates the use of SymPy for solving differential equations. 
+# You can further explore the solutions, plot them, and analyze their properties.
