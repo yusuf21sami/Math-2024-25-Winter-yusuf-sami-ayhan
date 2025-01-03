@@ -1,0 +1,41 @@
+# Tasks related to second-order surfaces
+
+**Visualize each task.** - Python, GeoGebra, Wolfram Alpha, ...
+
+* Write the equation of a sphere with center at point $P=(1,2,3)$ and radius $r=3$.
+* Do the spheres with equations $x^2 + y^2 + z^2 = 1$ and $x^2 + y^2 + z^2 = 2$ have any common points?
+* What curve in space is formed by the intersection of the sphere $x^2 + y^2 + z^2 = 1$ with the sphere $(x-1)^2 + y^2 + z^2 = 1$? Find the equation of this curve.
+* Write the equation of the tangent plane to the paraboloid $z=(x-1)^2+y^2+1$ at point $P=(1,0,1)$.
+
+* ##ex
+* import sympy as sp
+
+# Symbols
+x, y, z = sp.symbols('x y z')
+
+# 1. Sphere with center P=(1, 2, 3) and radius r=3
+sphere1 = (x - 1)**2 + (y - 2)**2 + (z - 3)**2 - 3**2
+print("Sphere equation:", sphere1)
+
+# 2. Do the spheres x^2 + y^2 + z^2 = 1 and x^2 + y^2 + z^2 = 2 have any common points?
+sphere_eq1 = x**2 + y**2 + z**2 - 1
+sphere_eq2 = x**2 + y**2 + z**2 - 2
+intersection_eq = sp.simplify(sphere_eq1 - sphere_eq2)
+print("Intersection equation between the spheres:", intersection_eq)
+
+if intersection_eq == 0:
+    print("The spheres do not intersect.")
+else:
+    print("The spheres do not have a direct intersection.")
+
+# 3. Intersection curve of x^2 + y^2 + z^2 = 1 and (x-1)^2 + y^2 + z^2 = 1
+sphere_eq3 = (x - 1)**2 + y**2 + z**2 - 1
+intersection_curve = sp.solve([sphere_eq1, sphere_eq3], (z, y))
+print("Intersection curve equation between spheres:", intersection_curve)
+
+# 4. Tangent plane to paraboloid z = (x-1)^2 + y^2 + 1 at P=(1, 0, 1)
+paraboloid_eq = z - ((x - 1)**2 + y**2 + 1)
+grad = sp.Matrix([sp.diff(paraboloid_eq, var) for var in (x, y, z)])
+P = sp.Matrix([1, 0, 1])
+tangent_plane = grad.dot(sp.Matrix([x, y, z]) - P)
+print("Tangent plane equation:", tangent_plane)
