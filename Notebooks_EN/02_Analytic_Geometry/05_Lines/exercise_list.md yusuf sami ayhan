@@ -1,0 +1,313 @@
+## Tasks related to equations of lines on a plane
+
+**Visualize each task.** - Python, GeoGebra, Wolfram Alpha, ...
+
+* The line passes through points $A(1, 2)$ and $B(3, 4)$. Find the equation of the line.
+* The line passes through point $A(1, 2)$ and is parallel to the line $y = 2x + 3$. Find the equation of the line.
+* The line passes through point $A(1, 2)$ and is perpendicular to the line $y = 2x + 3$. Find the equation of the line.
+* We have two lines $y = 2x + 3$ and $y = 3x + 2$. Find the intersection point of these lines and calculate the angle between them.
+* Write the equation of the line passing through point $A(1, 2)$ and parallel to the vector $\vec{v} = [2, 3]$.
+* We have the line $y = 2x + 3$. Find an example of a line perpendicular and parallel to it.
+* We have the line $y = 2x + 3$ and point $A(1, 2)$. Find the distance from point $A$ to the line.
+* The line intersects the coordinate axes at points $A(2, 0)$ and $B(0, 3)$. Find the equation of the line.
+* Calculate the angle between the line $y = x + 3$ and the $Ox$ axis.
+* Provide a vector perpendicular to the line $x + y + 1 = 0$.
+
+*##ex1 def find_line_equation(x1, y1, x2, y2):
+  """
+  Finds the equation of the line passing through two points.
+
+  Args:
+    x1: x-coordinate of the first point.
+    y1: y-coordinate of the first point.
+    x2: x-coordinate of the second point.
+    y2: y-coordinate of the second point.
+
+  Returns:
+    A tuple (slope, y-intercept) representing the equation of the line.
+  """
+
+  if x1 == x2:
+    raise ValueError("Cannot find slope for vertical lines.")
+
+  slope = (y2 - y1) / (x2 - x1)
+  y_intercept = y1 - slope * x1
+
+  return slope, y_intercept
+
+# Example usage:
+x1, y1 = 1, 2
+x2, y2 = 3, 4
+
+slope, y_intercept = find_line_equation(x1, y1, x2, y2)
+
+print(f"Equation of the line: y = {slope}x + {y_intercept}")
+
+##ex2 
+def find_parallel_line_equation(point, slope):
+  """
+  Finds the equation of the line parallel to the given slope and passing through the given point.
+
+  Args:
+    point: A tuple representing the (x, y) coordinates of the point.
+    slope: The slope of the parallel line.
+
+  Returns:
+    A tuple (slope, y-intercept) representing the equation of the line.
+  """
+  x, y = point
+  return slope, y - slope * x
+
+# Example usage:
+point_A = (1, 2)  # Point A(1, 2)
+slope_parallel = 2  # Slope of the given line y = 2x + 3
+
+slope, y_intercept = find_parallel_line_equation(point_A, slope_parallel)
+
+print(f"Equation of the parallel line: y = {slope}x + {y_intercept}")
+
+##ex3
+
+def find_perpendicular_line_equation(point, slope_given):
+  """
+  Finds the equation of the line perpendicular to the given slope and passing through the given point.
+
+  Args:
+    point: A tuple representing the (x, y) coordinates of the point.
+    slope_given: The slope of the given line.
+
+  Returns:
+    A tuple (slope, y-intercept) representing the equation of the perpendicular line.
+  """
+  x, y = point
+  slope_perpendicular = -1 / slope_given  # Slope of perpendicular lines are negative reciprocals
+  y_intercept = y - slope_perpendicular * x
+  return slope_perpendicular, y_intercept
+
+# Example usage:
+point_A = (1, 2)  # Point A(1, 2)
+slope_given = 2  # Slope of the given line y = 2x + 3
+
+slope, y_intercept = find_perpendicular_line_equation(point_A, slope_given)
+
+print(f"Equation of the perpendicular line: y = {slope}x + {y_intercept}")
+
+##ex4
+import math
+
+def find_intersection_point(m1, b1, m2, b2):
+  """
+  Finds the intersection point of two lines.
+
+  Args:
+    m1: Slope of the first line.
+    b1: Y-intercept of the first line.
+    m2: Slope of the second line.
+    b2: Y-intercept of the second line.
+
+  Returns:
+    A tuple (x, y) representing the coordinates of the intersection point,
+    or None if the lines are parallel.
+  """
+  if m1 == m2:
+    return None  # Lines are parallel
+
+  x = (b2 - b1) / (m1 - m2)
+  y = m1 * x + b1
+  return x, y
+
+def angle_between_lines(m1, m2):
+  """
+  Calculates the angle between two lines.
+
+  Args:
+    m1: Slope of the first line.
+    m2: Slope of the second line.
+
+  Returns:
+    The angle between the lines in degrees.
+  """
+  angle_radians = math.atan2(m2 - m1, 1 + m1 * m2)
+  angle_degrees = math.degrees(angle_radians)
+  return angle_degrees
+
+# Example usage:
+line1_slope = 2
+line1_intercept = 3
+line2_slope = 3
+line2_intercept = 2
+
+intersection_point = find_intersection_point(line1_slope, line1_intercept, 
+                                           line2_slope, line2_intercept)
+
+if intersection_point:
+  print(f"Intersection point: {intersection_point}")
+  angle = angle_between_lines(line1_slope, line2_slope)
+  print(f"Angle between lines: {angle:.2f} degrees")
+else:
+  print("Lines are parallel.")
+
+  ##ex5 
+  def line_from_point_and_parallel_vector(point, vector):
+  """
+  Finds the equation of the line passing through a given point and parallel to a given vector.
+
+  Args:
+    point: A tuple representing the (x, y) coordinates of the point.
+    vector: A tuple representing the (x, y) components of the vector.
+
+  Returns:
+    A tuple (slope, y_intercept) representing the equation of the line.
+  """
+  x1, y1 = point
+  v_x, v_y = vector
+
+  if v_x == 0:
+    raise ValueError("Vector is vertical, cannot determine slope.")
+
+  slope = v_y / v_x
+  y_intercept = y1 - slope * x1
+
+  return slope, y_intercept
+
+# Example usage:
+point_A = (1, 2)  # Point A(1, 2)
+vector_v = (2, 3)  # Vector v = [2, 3]
+
+slope, y_intercept = line_from_point_and_parallel_vector(point_A, vector_v)
+
+print(f"Equation of the line: y = {slope}x + {y_intercept}")
+
+##ex6 
+def find_parallel_and_perpendicular_lines(slope):
+  """
+  Finds the equations of a parallel and a perpendicular line to the given slope.
+
+  Args:
+    slope: The slope of the given line.
+
+  Returns:
+    A tuple containing:
+      - slope_parallel: The slope of a parallel line.
+      - slope_perpendicular: The slope of a perpendicular line.
+  """
+  slope_parallel = slope
+  slope_perpendicular = -1 / slope
+  return slope_parallel, slope_perpendicular
+
+# Example usage:
+given_line_slope = 2  # Slope of the given line y = 2x + 3
+
+slope_parallel, slope_perpendicular = find_parallel_and_perpendicular_lines(given_line_slope)
+
+print(f"Slope of a parallel line: {slope_parallel}")
+print(f"Slope of a perpendicular line: {slope_perpendicular}")
+
+# Example equations (using arbitrary y-intercepts):
+parallel_line_equation = f"y = {slope_parallel}x + 1" 
+perpendicular_line_equation = f"y = {slope_perpendicular}x - 2" 
+
+print(f"Example parallel line equation: {parallel_line_equation}")
+print(f"Example perpendicular line equation: {perpendicular_line_equation}")
+
+##ex7
+import math
+
+def distance_point_to_line(point, line_slope, line_intercept):
+  """
+  Calculates the distance from a point to a line.
+
+  Args:
+    point: A tuple representing the (x, y) coordinates of the point.
+    line_slope: The slope of the line.
+    line_intercept: The y-intercept of the line.
+
+  Returns:
+    The distance from the point to the line.
+  """
+  x1, y1 = point
+  a = -line_slope 
+  b = 1
+  c = -line_intercept
+
+  distance = abs(a * x1 + b * y1 + c) / math.sqrt(a**2 + b**2)
+  return distance
+
+# Example usage:
+point_A = (1, 2)  # Point A(1, 2)
+line_slope = 2  # Slope of the line y = 2x + 3
+line_intercept = 3
+
+distance = distance_point_to_line(point_A, line_slope, line_intercept)
+print(f"Distance from point A to the line: {distance}")
+
+##ex8
+def find_line_equation_from_intercepts(x_intercept, y_intercept):
+  """
+  Finds the equation of the line given its x-intercept and y-intercept.
+
+  Args:
+    x_intercept: The x-coordinate of the point where the line intersects the x-axis.
+    y_intercept: The y-coordinate of the point where the line intersects the y-axis.
+
+  Returns:
+    A tuple (slope, y_intercept) representing the equation of the line.
+  """
+  if x_intercept == 0:
+    raise ValueError("Cannot find slope for vertical lines.")
+
+  slope = -y_intercept / x_intercept
+  return slope, y_intercept
+
+# Example usage:
+x_intercept = 2  # x-intercept at point A(2, 0)
+y_intercept = 3  # y-intercept at point B(0, 3)
+
+slope, y_intercept = find_line_equation_from_intercepts(x_intercept, y_intercept)
+
+print(f"Equation of the line: y = {slope}x + {y_intercept}")
+
+##ex9
+import math
+
+def angle_with_x_axis(slope):
+  """
+  Calculates the angle between a line and the x-axis.
+
+  Args:
+    slope: The slope of the line.
+
+  Returns:
+    The angle in degrees.
+  """
+  angle_radians = math.atan(slope)
+  angle_degrees = math.degrees(angle_radians)
+  return angle_degrees
+
+# Example usage:
+line_slope = 1  # Slope of the line y = x + 3
+
+angle = angle_with_x_axis(line_slope)
+print(f"Angle between the line and the x-axis: {angle:.2f} degrees")
+
+##ex10
+
+def perpendicular_vector(line_equation):
+  """
+  Finds a vector perpendicular to the given line equation.
+
+  Args:
+    line_equation: The line equation in the form Ax + By + C = 0 
+                    (represented as a list of coefficients [A, B, C])
+
+  Returns:
+    A list representing the perpendicular vector.
+  """
+  A, B, C = line_equation
+  return [A, B]
+
+# Example usage:
+line_equation = [1, 1, 1]  # x + y + 1 = 0
+perpendicular_vector = perpendicular_vector(line_equation)
+print("Perpendicular vector:", perpendicular_vector)
+  
