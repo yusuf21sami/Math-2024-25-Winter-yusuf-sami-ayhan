@@ -1,0 +1,60 @@
+import numpy as np
+
+# 1. Equation of line through A(1, 2) and B(3, 4)
+A, B = (1, 2), (3, 4)
+m = (B[1] - A[1]) / (B[0] - A[0])  # Slope
+c = A[1] - m * A[0]  # Intercept
+line1 = f"y = {m}x + {c}"
+print(line1)
+
+# 2. Line through A(1, 2) parallel to y = 2x + 3
+m = 2
+c = 2 - m * 1
+line2 = f"y = {m}x + {c}"
+print(line2)
+
+# 3. Line through A(1, 2) perpendicular to y = 2x + 3
+m_perp = -1 / 2
+c = 2 - m_perp * 1
+line3 = f"y = {m_perp}x + {c}"
+print(line3)
+
+# 4. Intersection of y = 2x + 3 and y = 3x + 2
+A1, B1 = 2, 3
+A2, B2 = 3, 2
+x_inter = (B2 - B1) / (A1 - A2)
+y_inter = A1 * x_inter + B1
+print(f"Intersection: ({x_inter}, {y_inter})")
+
+# 5. Line through A(1, 2) parallel to v = [2, 3]
+m_vec = 3 / 2
+c = 2 - m_vec * 1
+line5 = f"y = {m_vec}x + {c}"
+print(line5)
+
+# 6. Example of perpendicular and parallel lines
+line_parallel = "y = 2x - 1"
+line_perpendicular = "y = -0.5x + 5"
+print(line_parallel, line_perpendicular)
+
+# 7. Distance from A(1, 2) to y = 2x + 3
+A, B, C = -2, 1, -3
+x0, y0 = 1, 2
+distance = abs(A * x0 + B * y0 + C) / np.sqrt(A**2 + B**2)
+print(f"Distance: {distance}")
+
+# 8. Line through A(2, 0) and B(0, 3)
+A, B = (2, 0), (0, 3)
+m = (B[1] - A[1]) / (B[0] - A[0])
+c = A[1] - m * A[0]
+line8 = f"y = {m}x + {c}"
+print(line8)
+
+# 9. Angle between y = x + 3 and x-axis
+angle = np.arctan(1) * 180 / np.pi
+print(f"Angle: {angle} degrees")
+
+# 10. Perpendicular vector to x + y + 1 = 0
+normal_vector = np.array([1, 1])
+perpendicular_vector = np.array([-1, 1])
+print(f"Perpendicular vector: {perpendicular_vector}")
