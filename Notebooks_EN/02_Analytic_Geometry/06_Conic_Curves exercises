@@ -1,0 +1,29 @@
+import numpy as np
+
+# 1. Circle equation
+h, k, r = 1, 2, 3
+circle_eq = f"(x - {h})^2 + (y - {k})^2 = {r**2}"
+print(circle_eq)
+
+# 2. Parabola equation
+a = -1  # Computed from conditions
+parabola_eq = f"y = {a}(x - 2)(x - 4)"
+print(parabola_eq)
+
+# 3. Ellipse center
+center_ellipse = (2, 2)
+print(f"Center of the ellipse: {center_ellipse}")
+
+# 4. Slope of tangent line
+m = 3
+print(f"Slope of tangent line: {m}")
+
+# 5. Intersection of hyperbola and ellipse
+x_vals = [np.sqrt(2), -np.sqrt(2), np.sqrt(2), -np.sqrt(2)]
+y_vals = [1, 1, -1, -1]
+intersection_points = list(zip(x_vals, y_vals))
+print(f"Intersection points: {intersection_points}")
+
+# 6. Distance between hyperbola branches
+distance_branches = 2
+print(f"Distance between hyperbola branches: {distance_branches}")
