@@ -1,0 +1,37 @@
+# 1. Equation of a sphere
+def sphere_equation(center, radius):
+    x0, y0, z0 = center
+    r = radius
+    return f"(x - {x0})^2 + (y - {y0})^2 + (z - {z0})^2 = {r**2}"
+
+center = (1, 2, 3)
+radius = 3
+print("Sphere equation:", sphere_equation(center, radius))
+
+# 2. Check for intersection of spheres
+def spheres_intersect(radius1, radius2):
+    return "No common points" if radius1 != radius2 else "Infinite common points"
+
+print("Spheres intersection:", spheres_intersect(1, 2**0.5))
+
+# 3. Intersection curve of spheres
+def intersection_curve():
+    x = 1 / 2
+    radius_circle = (3 / 4)**0.5
+    return f"Circle in plane x = {x} with radius {radius_circle}"
+
+print("Intersection curve:", intersection_curve())
+
+# 4. Tangent plane to paraboloid
+def tangent_plane_paraboloid(x0, y0, z0, f_x, f_y):
+    return f"z - {z0} = {f_x}(x - {x0}) + {f_y}(y - {y0})"
+
+# Given paraboloid
+def paraboloid_grad(x, y):
+    fx = 2 * (x - 1)
+    fy = 2 * y
+    return fx, fy
+
+x0, y0, z0 = 1, 0, 1
+fx, fy = paraboloid_grad(x0, y0)
+print("Tangent plane:", tangent_plane_paraboloid(x0, y0, z0, fx, fy))
