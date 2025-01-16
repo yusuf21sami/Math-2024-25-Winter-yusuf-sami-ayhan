@@ -1,0 +1,55 @@
+import numpy as np
+
+# 1. Plane through A, B, C
+A, B, C = np.array([1, 2, 3]), np.array([3, 4, 5]), np.array([2, 1, 4])
+AB = B - A
+AC = C - A
+n = np.cross(AB, AC)
+d = -np.dot(n, A)
+plane_eq1 = f"{n[0]}x + {n[1]}y + {n[2]}z + {d} = 0"
+print(plane_eq1)
+
+# 2. Plane parallel to 2x + 3y + 4z = 5
+n = [2, 3, 4]
+d = np.dot(n, [1, 2, 3])
+plane_eq2 = f"{n[0]}x + {n[1]}y + {n[2]}z = {d}"
+print(plane_eq2)
+
+# 3. Plane perpendicular to n = [2, 3, 4]
+n = [2, 3, 4]
+d = np.dot(n, [1, 2, 3])
+plane_eq3 = f"{n[0]}x + {n[1]}y + {n[2]}z = {d}"
+print(plane_eq3)
+
+# 4. Line of intersection of two planes (system of equations solved later).
+
+# 5. Plane through A and parallel to v1, v2
+v1, v2 = np.array([1, 0, 1]), np.array([0, 1, -1])
+n = np.cross(v1, v2)
+d = -np.dot(n, A)
+plane_eq5 = f"{n[0]}x + {n[1]}y + {n[2]}z + {d} = 0"
+print(plane_eq5)
+
+# 6. Example parallel and perpendicular planes
+print("Parallel: 2x + 3y + 4z = 10")
+print("Perpendicular: Normal vector orthogonal to [2, 3, 4]")
+
+# 7. Distance from point to plane
+point = np.array([1, 2, 3])
+plane_normal = np.array([2, 3, 4])
+plane_constant = 5
+distance = abs(np.dot(plane_normal, point) - plane_constant) / np.linalg.norm(plane_normal)
+print(f"Distance: {distance}")
+
+# 8. Plane through A, B, C (intersection points on axes)
+print("Plane equation: 6x + 4y + 3z = 24")
+
+# 9. Angle between planes
+n1, n2 = np.array([1, 1, 1]), np.array([1, 0, 0])
+cos_theta = np.dot(n1, n2) / (np.linalg.norm(n1) * np.linalg.norm(n2))
+angle = np.arccos(cos_theta) * 180 / np.pi
+print(f"Angle: {angle} degrees")
+
+# 10. Perpendicular vector to x + y + z = 1
+normal_vector = np.array([1, 1, 1])
+print(f"Perpendicular vector: {normal_vector}")
